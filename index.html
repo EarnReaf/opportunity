@@ -539,7 +539,7 @@ body {
 .payment-card {
     background: rgba(255,255,255,0.9);
     margin: 20px 15px;
-    padding: 70px;
+    padding: 30px 30px 30px 30px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     text-align: center;
@@ -1237,7 +1237,8 @@ body {
 <section class="payment" style="display: none;">
   <div class="header">
     <div class="floating-home" onclick="showSection('home')">back</div>
-    <h2>Pay and Get your Code</h2>
+<h2>Buy the Book and Get Your Sharing Code</h2>
+
     <p>Follow steps below</p>
   </div>
 <!-- Collapsible Payment Guidelines -->
@@ -1301,54 +1302,67 @@ function toggleRules() {
 }
 </script>
 
+<div style="text-align:center; margin-top:20px;">
+  <img src="C:\Users\DELL 5300\OneDrive\Documentos/how.png" alt="eBook cover" 
+       style="width:150px; height:250px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2);">
 
-  <div class="payment-card">
+  <br><br>
 
-    <!-- STEP 1 -->
-    <div class="pay-step">
-      1. Go to <strong>Buy Goods & Services Till</strong>
-    </div>
-
-    <!-- STEP 2 -->
-    <div class="pay-step">
-
-      <div class="till-row">
-        <span id="tillNumber">3194361</span>
-        <button onclick="copyTill()" class="copy-btn">Copy</button>
-      </div>
-      
-    </div>
-
-    <!-- STEP 3 -->
-    <div class="pay-step">
-      2. Amount <strong>ksh.300</strong>
-    </div>
-
-    <!-- STEP 4 -->
-    <div class="pay-step">
-      3. Confirm PIN.
-    </div>
-
-         <div class="till-row">
-        <span id="tillNumber" style="font-style: italic;">Bloomtasker Net</span>
-      </div>
-
-    <!-- STEP 5 -->
-    <div class="pay-step">
-      4. Your number used to pay.
-      <input type="text" placeholder="e.g. 07........" class="mpesa-input">
-    </div>
-     <!-- Add below STEP 5, before the button -->
-<div class="payment-submissions">
-  <div id="payment-list">
-    <!-- Numbers from Firebase will be loaded here -->
-  </div>
+  <button class="btn primary" style="width: 150px;" onclick="openPaymentModal()">
+    📘KSh 300
+  </button>
 </div>
 
-    <button class="btn primary" onclick="confirmPayment()">I Have Paid</button>
+
+<!-- PAYMENT POPUP -->
+<div id="payment-modal" class="withdraw-modal">
 
 
-  </div>
+    <div class="payment-card">
+
+      <div class="pay-step">
+        1. Go to <strong>Buy Goods & Services Till</strong>
+      </div>
+
+      <div class="pay-step">
+        <div class="till-row">
+          <span id="tillNumber">3194361</span>
+          <button onclick="copyTill()" class="copy-btn">Copy</button>
+        </div>
+      </div>
+
+      <div class="pay-step">
+        2. Amount <strong>KSh 300</strong> <!-- 🔥 updated -->
+      </div>
+
+      <div class="pay-step">
+        3. Confirm PIN.
+      </div>
+
+      <div class="till-row">
+        <span style="font-style: italic;">Bloomtasker Net</span>
+      </div>
+
+      <div class="pay-step">
+        4. Your number used to pay.
+        <input type="text" placeholder="eg. 07....." class="mpesa-input">
+      </div>
+
+      <div class="payment-submissions">
+        <div id="payment-list"></div>
+      </div>
+
+      <button class="btn primary" onclick="confirmPayment()">I Have Paid</button>
+
+      <br><br>
+
+      <!-- CLOSE BUTTON -->
+      <button class="btn cancel-withdraw" onclick="closePaymentModal()">Cancel</button>
+
+    </div>
+
+</div>
+
 </section>
 
 <section class="agreement-page" style="display: none;">
@@ -1397,7 +1411,7 @@ function toggleRules() {
 
 <footer class="footer">
   <div class="footer-content">
-    <p class="footer-quote">“Act fast — refer them first, before they get refered!”<a href="https://earnreaf.github.io/opportunity/about.html" class="footer-link"> About</a>
+    <p class="footer-quote">“Act fast — refer them first, before they get refered!”<a href="https://earnreaf.github.io/opportunity/about.html" class="footer-link"> About</a></p>
     
   </div>
 </footer>
@@ -2450,6 +2464,39 @@ if ('scrollRestoration' in history) {
 window.addEventListener('load', () => {
   window.scrollTo(0, 0);
 });
+function openPaymentModal() {
+  document.getElementById("payment-modal").style.display = "flex";
+}
+
+function closePaymentModal() {
+  document.getElementById("payment-modal").style.display = "none";
+}
+const paymentModal = document.getElementById("payment-modal");
+const paymentCard = paymentModal.querySelector(".payment-card");
+
+// Close ONLY when clicking outside
+paymentModal.addEventListener("click", (e) => {
+    if (e.target === paymentModal) {
+        closePaymentModal();
+    }
+});
+
+// Prevent clicks inside from closing
+paymentCard.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
+
+function copyTill() {
+  const tillText = document.getElementById("tillNumber").innerText;
+  const btn = document.querySelector(".copy-btn");
+
+  navigator.clipboard.writeText(tillText).then(() => {
+    btn.innerText = "Copied!";
+    setTimeout(() => {
+      btn.innerText = "Copy";
+    }, 2000);
+  });
+}
 
 </script>
 
