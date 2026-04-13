@@ -3,181 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earn Easy</title>
-
+<title>Simple Earning Flow</title>
 <style>
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: #020617;
-    color: white;
+    background: #0f172a;
+    color: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.box {
+    background: #1e293b;
+    padding: 28px;
+    border-radius: 14px;
+    max-width: 420px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+h1 {
+    color: #38bdf8;
+    margin-bottom: 15px;
     text-align: center;
 }
-
-.box {
-    padding: 25px;
-}
-
-.big {
-    font-size: 2.7em;
+.highlight { color: #22c55e; font-weight: bold; }
+.small { color: #94a3b8; font-size: 12px; }
+.section { margin-top: 16px; }
+.center-title {
+    text-align: center;
     font-weight: bold;
+    margin-bottom: 8px;
 }
-
-.money {
-    color: #22c55e;
-    text-shadow: 0 0 10px rgba(34,197,94,0.7);
+.list {
+    text-align: left;
+    line-height: 1.6;
 }
-
-.card {
-    background: #0f172a;
-    margin: 18px auto;
-    padding: 22px;
-    border-radius: 14px;
-    max-width: 350px;
+.math {
+    text-align: center;
+    margin-top: 10px;
 }
-
-.arrow {
-    font-size: 2em;
-}
-
-.highlight {
-    font-size: 2em;
-}
-
 button {
-    background: #22c55e;
-    color: black;
+    margin-top: 18px;
+    padding: 12px;
+    width: 100%;
     border: none;
-    padding: 16px;
-    font-size: 1.2em;
-    border-radius: 40px;
-    width: 85%;
-    max-width: 320px;
-    margin-top: 20px;
+    border-radius: 8px;
+    background: #38bdf8;
+    font-weight: bold;
     cursor: pointer;
-}
-
-.small {
-    opacity: 0.7;
 }
 </style>
 </head>
-
 <body>
 
 <div class="box">
 
-<!-- MAIN CONTENT -->
-<div id="mainContent">
+<h1>New Opprtunity</h1>
 
-    <div class="big">
-        What can <span class="money">KES 300</span> do for you?
-    </div>
+<p class="center-title">Starting with <span class="highlight">300 KSh</span> you can make <span class="highlight">100,000+ KSh +</span></p>
 
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTc4NGhtZzd0dDAwZzQ3eXdqdWNpc2Z0NDcwdWdldHlvaXJ6ZW10NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h0MTqLyvgG0Ss/giphy.gif">
-
-    <div class="card">🔑 Get your unique code</div>
-    <div class="card">Invite 1 = <span class="money">KES 100</span></div>
-
-    <div class="arrow">👇</div>
-
-    <div class="card">10 people = <span class="money">KES 1,000</span></div>
-    <div class="card">100 people = <span class="money">KES 10,000</span></div>
-    <div class="card highlight">500 people = <span class="money">KES 50,000</span></div>
-<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXA0aXduNWhqaDNrOHNrazY1ZGY5MXlyZXk1dXp2bzZrMzhsMXZnOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oYtVHSxngR3lC/giphy.gif" alt="">
-    <div class="big">🔥 Simple. Fair.</div>
-    <p>You invite → You earn</p>
-
-    <button onclick="go()">START NOW</button>
-
-    <p class="small">2 minutes • No stress</p>
-
-    <button onclick="openReviews()">👀 See Reviews</button>
-
+<div class="section">
+<p class="center-title highlight"><strong>How is it possible.</strong></p>
+<div class="list">
+<p>- Buy Our book at <strong>(300 KSh)</strong> only</p>
+<p>- get a unique code </p>
+<p>- Share your code with <strong>friends</strong> who whats to make money too.</p>
+<p>- once a friend get started and buys the book, you get <span class="highlight">100 KSh</span></p>
+</div>
 </div>
 
-
-<!-- REVIEWS SCREEN -->
-<div id="reviewSection" style="display:none;">
-
-    <button onclick="closeReviews()">⬅ Back</button>
-
-    <div class="big">💬 best Reviews</div>
-
-    <div class="card">"I followed the guide and made KSh 12,500 in just 2 weeks! I never thought online referrals could be this simple."<div class="author">– Jane K., Nairobi</div></div>
-    <div class="card">"The tips and strategies are clear and easy. I referred 5 friends and earned extra commissions this month." <div class="author">– David M., Mombasa</div></div>
-    <div class="card">"Finally a legit way to earn online without any scams. The referral system works and payments are instant via M-Pesa."<div class="author">– Aisha N., Kisumu</div></div>
-<div class="card">
-  "I was skeptical at first, but I earned KSh 8,000 in a week by just sharing with friends!" 
-  <div class="author">– Michael L., Eldoret</div>
+<div class="section">
+<p class="center-title highlight">Simple Math</p>
+<div class="math">
+<p>1 = 100 KSh</p>
+<p>3 = 300 (break even)</p>
+<p>5 = 500</p>
+<p>10 = 1,000</p>
+</div>
 </div>
 
-<div class="card">
-  "Super simple and transparent. My friends joined and I got paid instantly. Highly recommend!" 
-  <div class="author">– Fatuma A., Nakuru</div>
+<div class="section">
+<div class="list">
+<p>- If you use social media correctly.</p>
+<p>500 = 50,000 KSh</p>
+<p>1000 = 100,000 KSh</p>
+</div>
 </div>
 
-<div class="card">
-  "This referral system actually works! I made KSh 20,000 in a month without any extra effort." 
-  <div class="author">– Peter N., Kisii</div>
-</div>
-    <div class="big">⭐ Add Review</div>
-
-<div class="card">
-    <textarea id="reviewInput" placeholder="Write your review..."
-        style="width:90%; padding:10px; border-radius:10px; border:none; resize:none; height:80px;"></textarea>
-    <br><br>
-    <button onclick="sendReview()">Send</button>
-</div>
-
-    <div id="reviews"></div>
-
-</div>
-
-</div>
-
-<script>
-function go(){
-    window.location.href = "https://earnreaf.github.io/opportunity/";
-}
-
-function openReviews(){
-    document.getElementById("mainContent").style.display = "none";
-    document.getElementById("reviewSection").style.display = "block";
-}
-
-function closeReviews(){
-    document.getElementById("reviewSection").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-}
-
-function sendReview(){
-    let input = document.getElementById("reviewInput");
-    let text = input.value;
-
-    if(text.trim() === "") return;
-
-    let div = document.createElement("div");
-    div.className = "card";
-    div.innerText = "🗣️ " + text;
-
-    document.getElementById("reviews").prepend(div);
-    input.value = "";
-}
-
-function sendReview() {
-    let input = document.getElementById("reviewInput");
-    let text = input.value;
-
-    if (text.trim() === "") return;
-
-    // Clear the input
-    input.value = "";
-
-    // Show alert only
-    alert("✅ Thanks for your feedback!");
-}
-</script>
-
-</body>
+<div class="list">
+<p class="small">No free money, you Buy → you Share → you Earn</p>
+<p class="small">No hidden steps. No confusion.</p>
+<p>Refer a friend before they get refered by someone else.</p>
+<button onclick="window.location.href='https://earnreaf.github.io/opportunity/'">
+  Get Started
+</button>
 </html>
