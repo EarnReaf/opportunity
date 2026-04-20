@@ -4,1194 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<title>Referral App</title>
+<title>Reaf</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 
-}
-
-body {
-    background: #f4f6fb;
-    color: #333;
-}
-
-.header {
-    padding: 20px;
-   background: linear-gradient(135deg, #4facfe, #43e97b);
-    color: white;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-
-    position: sticky; /* makes it stick */
-    top: 0;           /* stick to top */
-    z-index: 1000;    /* stay above other elements */
-}
-
-
-.header h2 {
-    font-size: 22px;
-}
-
-/* BALANCE CARD */
-.balance-card {
-   background: linear-gradient(135deg, #0f172a, #1e293b);
-    margin: 10px 15px 20px;
-    padding: 20px;
-    border-radius: 20px;
-    color: white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    text-align: center;
-}
-
-.balance-card h3 {
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-
-.balance {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-/* BUTTONS */
-.actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.btn {
-    flex: 1;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.withdraw {
-    background: #ffb300;
-    color: white;
-}
-
-.invite {
-    background: white;
-    color: #333;
-}
-
-/* FEATURES */
-.features {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 10px;
-}
-
-.feature {
-    text-align: center;
-}
-
-.feature .icon {
-    background: white;
-    padding: 15px;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 5px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.feature .icon:hover {
-  cursor: pointer;
-    transform: scale(1.08);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* LEADERBOARD */
-.section {
-    padding: 15px;
-}
-
-.section h3 {
-    margin-bottom: 10px;
-}
-
-.card {
-    background: white;
-    border-radius: 15px;
-    padding: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    background: #ddd;
-    border-radius: 50%;
-}
-
-.amount {
-    color:#0a9a0a;
-    font-weight: bold;
-}
-
-.section {
-    padding: 15px;
-}
-
-/* Make leaderboard scrollable */
-.leaderboard {
-    max-height: 350px; /* Adjust as needed */
-    overflow-y: auto;
-    padding-right: 5px; /* space for scrollbar */
-}
-
-/* Optional: nicer scrollbar for Webkit browsers */
-.leaderboard::-webkit-scrollbar {
-    width: 6px;
-}
-
-.leaderboard::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 3px;
-}
-
-.leaderboard::-webkit-scrollbar-track {
-    background-color: rgba(0,0,0,0.05);
-}
-
-
-/* Rewards Section */
-.rewards {
-  padding: 0 15px 30px;
-  font-family:sans-serif;
-}
-
-/* Header */
-.rewards .header {
-  border-radius: 0 0 25px 25px;
-  background: linear-gradient(135deg, #4facfe, #43e97b);
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-  
-  /* Sticky properties */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-
-/* Reward Card */
-.rewards .reward-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-  padding: 25px;
-  border-radius: 20px;
-
-  /* Soft white background */
-  background: rgba(255, 255, 255, 0.85); /* semi-transparent white */
-  
-  color: #111; /* solid black text */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  text-align: center;
-}
-
-/* Progress Bar inside white card */
-.rewards .progress-bar {
-  background: rgba(0,0,0,0.1); /* subtle dark background for contrast */
-  border-radius: 12px;
-  overflow: hidden;
-  width: 100%;
-  height: 25px;
-  margin: 15px 0;
-}
-
-.rewards .progress-bar .progress {
-  width: 0%;
-  background: #4facfe; /* visible gradient or solid color */
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white; /* progress text stays white for contrast */
-}
-
-/* Invite Button */
-.rewards .btn.invite {
-  width: 100%;
-  margin-top: 10px;
-  background: #111; /* solid black button */
-  color: white;
-  padding: 10px 0;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: transform 0.2s ease;
-}
-
-.rewards .btn.invite:hover {
-  transform: scale(1.05);
-  background: #333; /* slightly lighter black on hover */
-}
-
-
-/* Referral Code Input */
-.rewards .referral-code {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.2);
-    text-align: center;
-    font-weight: bold;
-    color: #111; /* visible black */
-    background: rgba(255, 255, 255, 0.6); /* faded white */
-    pointer-events: none; /* optional: makes it fully non-editable */
-    user-select: all;     /* allow users to copy the code */
-}
-
-/* GENERAL STYLES */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:sans-serif;
-}
-
-body {
-    background: #f4f6fb;
-    color: #333;
-}
-
-/* HEADER */
-.header {
-    padding: 20px;
-    background: linear-gradient(135deg, #4facfe, #43e97b);
-    color: white;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-/* LEADERBOARD / REFERRAL CARDS */
-.leaderboard {
-    max-height: 600px;
-    overflow-y: auto;
-    padding-right: 5px; /* space for scrollbar */
-}
-
-.leaderboard::-webkit-scrollbar {
-    width: 6px;
-}
-
-.leaderboard::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 3px;
-}
-
-.leaderboard::-webkit-scrollbar-track {
-    background-color: rgba(0,0,0,0.05);
-}
-
-.card {
-    background: white;
-    border-radius: 15px;
-    padding: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    background: #ddd;
-    border-radius: 50%;
-}
-
-.amount {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* Paid/Pending Colors */
-.amount.paid {
-    color: green;
-}
-
-.amount.pending {
-    color: orange;
-}
-
-/* Floating Home Button */
-.floating-home {
-    position: absolute;
-    top: 5px;
-    text-decoration: underline;
-    left: 15px;
-    color: #333;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1100; /* above header */
-    transition: transform 0.2s ease;
-}
-
-.floating-home:hover {
-    transform: scale(1.1);
-}
-
-
-/* GUIDE SECTION */
-.guide-content {
-    padding: 15px;
-}
-
-.guide-steps {
-    margin-top: 15px;
-}
-
-.step {
-    background: white;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-}
-
-.step-icon {
-    font-size: 22px;
-}
-
-.step-text {
-    font-size: 14px;
-}
-
-/* GIF DEMO */
-.guide-gif {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.guide-gif img {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* LOGIN CARD */
-.login-card {
-    background: rgba(255,255,255,0.9);
-    margin: 20px 15px;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* TOGGLE BUTTONS */
-.auth-toggle {
-    display: flex;
-    background: #eee;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-
-.auth-toggle button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    background: transparent;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.auth-toggle button.active {
-    background: #4facfe;
-    color: white;
-}
-
-/* FORMS */
-.form {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.form.active {
-    display: flex;
-}
-
-/* INPUTS */
-.login input {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.2);
-    outline: none;
-}
-
-/* PRIMARY BUTTON */
-.btn.primary {
-    background: #4facfe;
-    color: white;
-    margin-top: 10px;
-}
-
-/* LOGIN CARD */
-.login-card {
-    background: rgba(255,255,255,0.9);
-    margin: 20px 15px;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* TOGGLE BUTTONS */
-.auth-toggle {
-    display: flex;
-    background: #eee;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-
-.auth-toggle button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    background: transparent;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.auth-toggle button.active {
-    background: #4facfe;
-    color: white;
-}
-
-/* FORMS */
-.form {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.form.active {
-    display: flex;
-}
-
-/* INPUTS */
-.login input {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.2);
-    outline: none;
-}
-
-/* PRIMARY BUTTON */
-.btn.primary {
-    background: #4facfe;
-    color: white;
-    margin-top: 10px;
-}
-
-/* PAYMENT CARD */
-.payment-card {
-    background: rgba(255,255,255,0.9);
-    margin: 20px 15px;
-    padding: 30px 30px 30px 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-/* TILL BOX */
-.till-box {
-    background: #f4f6fb;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 15px 0;
-}
-
-.till-number {
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-top: 5px;
-    color: #111;
-}
-
-/* STEPS */
-.payment-steps {
-    text-align: left;
-    font-size: 14px;
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-/* INPUT */
-.mpesa-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.2);
-    margin-top: 10px;
-    outline: none;
-}
-
-/* BUTTON */
-.payment .btn.primary {
-    width: 100%;
-    margin-top: 15px;
-    background: #00c853; /* M-Pesa green */
-    color: white;
-}
-
-/* Payment Steps */
-.pay-step {
-    text-align: left;
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-/* Till Row */
-.till-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f4f6fb;
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 5px;
-}
-
-.till-row span {
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 2px;
-}
-
-/* Copy Button */
-.copy-btn {
-    background: #4facfe;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* Amount Box */
-.amount-box {
-    background: #f4f6fb;
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 5px;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Button */
-.payment .btn.primary {
-    width: 100%;
-    margin-top: 15px;
-    background: #00c853;
-    color: white;
-}
-
-/* Guide CTA */
-.guide-cta {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.guide-cta span {
-    text-decoration: underline;
-    color: #4facfe;
-    cursor: pointer;
-    font-size: 20px;
-    transition: opacity 0.2s ease;
-}
-
-.guide-cta span:hover {
-    opacity: 0.7;
-}
-
-.btn.invite {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    background-color: #4caf50; /* Active color (green) */
-    color: #fff;
-}
-
-.btn.invite:disabled {
-    background-color: #ccc;  /* Greyed out if inactive */
-    cursor: not-allowed;
-}
-
-/* Floating Home Button */
-.floating-join {
-    position: absolute;
-    top: 5px;
-    text-decoration: underline;
-    right: 15px;
-    color: #333;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1100; /* above header */
-    transition: transform 0.2s ease;
-}
-
-.floating-join:hover {
-    transform: scale(1.1);
-}
-
-.payment-submissions {
-  margin-top: 20px;
-}
-.payment-entry input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  font-weight: bold;
-  color: green;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-/* Modal overlay */
-.withdraw-modal {
-  display: none;
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Modal content */
-.withdraw-content {
-  background: #fff;
-  padding: 25px 30px;
-  border-radius: 10px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* Headline */
-.withdraw-content h3 {
-  margin-bottom: 15px;
-}
-
-/* Text */
-.withdraw-content p {
-  margin-bottom: 20px;
-  font-size: 15px;
-  color: #333;
-}
-
-/* Buttons */
-.btn {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.confirm-withdraw {
-  background: #28a745;
-  color: white;
-  margin-right: 10px;
-}
-
-.cancel-withdraw {
-  background: #ccc;
-  color: #333;
-}
-
-.payout-history {
-    margin-top: 15px;
-    font-size: 14px;
-    text-align: center;
-    color: #fff;
-    opacity: 0.9;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: 0.2s ease;
-}
-
-.payout-history:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.agreement-box {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #555;
-}
-
-.agreement-link {
-  color: #4facfe;
-  text-decoration: underline;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.agreement-link:hover {
-  opacity: 0.7;
-}
-
-.join-btn {
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-.join-btn.login {
-  background: #2563eb;
-  color: white;
-}
-
-.join-btn.login:hover {
-  background: #1d4ed8;
-  transform: scale(1.05);
-}.join-btn.activate {
-  background: #f59e0b;
-  color: white;
-}
-
-.join-btn.activate:hover {
-  background: #d97706;
-  transform: scale(1.05);
-}
-.join-btn.empty {
-  background: #e5e7eb;
-  color: #374151;
-  cursor: default;
-}
-.join-btn:hover {
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-.header p {
-  padding-top: 10px; /* adjust the value as needed */
-}
-
-.footer {
-  background-color: #1a1a1a; /* dark, professional */
-  color: #f1f1f1;
-  text-align: center;
-  padding: 15px 10px;
-  font-family: sans-serif;
-}
-
-.footer .footer-quote {
-  font-style: italic;
-  margin-bottom: 8px;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.footer .footer-link {
-  color: #4caf50; /* accent color */
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.footer .footer-link:hover {
-  text-decoration: underline;
-}
-
-/* MOBILE OPTIMIZATION */
-@media (min-width: 600px) {
-    body {
-        max-width: 400px;
-        margin: auto;
-    }
-}
-</style>
 </head>
 
 <body>
 
-<section class="home" style="display: block">  
-<div class="header">
-      <!-- Right-side buttons -->
-  <div class="floating-join">
-    <div id="join-btn" onclick="handleJoin()" style="display: none;">Login</div>
-    <div id="logout-btn" onclick="handleLogout()" style="display: none;">Logout</div>
-  </div>
-    <h2 id="welcomeText">👋 Welcome</h2>
-    <p>Earn by referring friends</p>
-</div>
+<section class="agreement-section" id="agreementSection">
 
+  <div class="agreement-card">
+    
+    <h2>User Agreement</h2>
 
+    <div class="agreement-content">
+      <p>Welcome to Earn Reaf.</p>
 
+      <p>
+        By creating an account, you agree to:
+      </p>
 
-
-
-
-<div class="balance-card">
-    <h3>Your Balance</h3>
-    <div class="balance">KSh 0</div>
-
-    <div class="actions">
-        <button class="btn withdraw" onclick="handleWithdrawClick();">Withdraw</button>
-        <button class="btn invite" onclick="handleInvite()">Invite & Earn</button>
-    </div>
-
-    <!-- 🔥 Payout History Link -->
-    <div class="payout-history" onclick="showWithdrawHistory()">
-        📜 View Payout History
-    </div>
-</div>
-
-
-<div class="features">
-    <div class="feature" onclick="showSection('guide')">
-        <div class="icon">📢</div>
-        <small>Guide</small>
-    </div>
-    <div class="feature" onclick="showSection('rewards')">
-        <div class="icon">🎁</div>
-        <small>Rewards</small>
-    </div>
-    <div class="feature" onclick="showReferralsSection()">
-        <div class="icon">👥</div>
-        <small>Referrals</small>
-    </div>
-</div>
-
-
-<div class="section" style="background-color: #eaeaea;border-radius: 8px;">
-    <h3>🏆Top Earners Leaderboard</h3>
-
-    <div class="leaderboard">
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>mavoyo markie</span>
-            </div>
-            <div class="amount">KSh 17,500</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Gsamuel</span>
-            </div>
-            <div class="amount">KSh 13,100</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Sophia</span>
-            </div>
-            <div class="amount">KSh 12,950</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Michael</span>
-            </div>
-            <div class="amount">KSh 12,700</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Olivia</span>
-            </div>
-            <div class="amount">KSh 11,500</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Daniel</span>
-            </div>
-            <div class="amount">KSh 9,300</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Emma</span>
-            </div>
-            <div class="amount">KSh 9,100</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>William</span>
-            </div>
-            <div class="amount">KSh 9,000</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>Ava</span>
-            </div>
-            <div class="amount">KSh 8,700</div>
-        </div>
-        <div class="card">
-            <div class="user">
-                <div class="avatar"></div>
-                <span>James</span>
-            </div>
-            <div class="amount">KSh 7,500</div>
-        </div>
-    </div>
-</div>
-
-</div>
-
-</section>
-
-<section class="withdrawhistory" style="display: none;">
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">back</div>
-    <h2>Withdraw history!</h2>
-    <p>see all your payouts.</p>
-  </div>
-
-  <div id="withdraw-list" class="leaderboard">
-    <!-- Dynamic content -->
-  </div>
-</section>
-
-
-<section class="sharecode" style="display: none;">
-  <!-- Header -->
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">back</div>
-    <h2>Share Your Code!</h2>
-    <p>Copy and tell friends to sign up using your code to earn rewards.</p>
-  </div>
-
-  <!-- Share content -->
-  <div class="share-content" style="text-align:center; margin-top:20px;">
-    <div class="code-container" style="margin-bottom:10px;">
-         <img style="width: 380px;" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3b2Z4cWx1emY4Z2wwa2YyNGd0ZGVmbXdwanUwdHBjc3BwNncwMnFidSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/4QEGzwV57p27EbVHXG/giphy.gif" alt="App Demo">
-         <br>
-         <span id="user-ref-code" style="font-weight:bold; font-size:1.5em;">XXXXXXX</span>
-      <button onclick="copyRefCode()" style="margin-left:10px; padding:5px 10px; cursor:pointer;">Copy</button>
-    </div>
-
-    <div class="share-tips" style="margin-top:20px; text-align:left; max-width:400px; margin-left:auto; margin-right:auto;padding:50px;">
-      <h3>Sharing Tips:</h3>
       <ul>
-        <li>Send your code to friends via WhatsApp or SMS.</li>
-        <li>Share on social media for more rewards.</li>
-        <li>Tell friends they get a bonus when they join with your code.</li>
-        <li>Keep your code handy and remind friends to use it!</li>
+        <li>Provide accurate information</li>
+        <li>Use the platform fairly</li>
+        <li>Not abuse the referral system</li>
+        <li>Accept that earnings depend on referrals</li>
       </ul>
-    </div>
-  </div>
-</section>
 
-<section class="rewards" style="display: none;">
-  <!-- Rewards Header -->
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">back</div>
-    <h2>Rewards!</h2>
-    <p>reach the 100 mark and get reward.</p>
-  </div>
-
-  <!-- Reward Card -->
-  <div class="reward-card">
-    <h3>Your Reward Progress</h3>
-    <p>Refer 100 friends and earn <strong>KSh 5,000</strong> Extra</p>
-
-    <div class="progress-bar">
-      <div class="progress">100%</div>
-    </div>
-
-<p>Only <strong id="referrals-remaining">100</strong> / 100 left to claim your reward! 💪</p>
-
-
-    <button id="claimBtn" class="btn invite" disabled>Claim</button>
-
-  </div>
-</section>
-
-<section class="referrals" style="display: none;">
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">back</div>
-    <h2>Referrals!</h2>
-    <p>People you invited.</p>
-  </div>
-
-  <div class="leaderboard" id="referrals-list">
-    <!-- Dynamic referral cards will go here -->
-  </div>
-</section>
-
-
-<section class="guide" style="display: none;">
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">back</div>
-    <h2>How You Earn 💰</h2>
-    <p>Simple steps to start making money</p>
-  </div>
-
-  <div class="guide-content">
-
-    <!-- VALUE FIRST -->
-    <div class="guide-intro">
       <p>
-        🚀 Join many other users already earning by sharing a simple code.
-        <br><br>
-        💡 Activate your account and start earning from referrals.
+        We reserve the right to suspend accounts involved in fraud or abuse.
       </p>
     </div>
 
-    <!-- STEPS -->
-    <div class="guide-steps">
-
-      <div class="step highlight">
-        <div class="step-icon">🔓</div>
-        <div class="step-text">
-          <strong>1. Activate Your Account</strong><br>
-          Make 300 ksh payment <strong>Only</strong> to start earning.
-          <br><small>✔ Its required to get your referral code</small>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-icon">📢</div>
-        <div class="step-text">
-          <strong>2. Invite others</strong><br>
-          Share your referral code with friends on WhatsApp, Facebook, etc.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-icon">👥</div>
-        <div class="step-text">
-          <strong>3. They Join & Activate</strong><br>
-          Your friends sign up and activate their accounts.
-        </div>
-      </div>
-
-<div class="step">
-  <div class="step-icon">💰</div>
-
-  <div class="step-text">
-    <strong>4. You Get rewarded</strong><br>
-    Earn money for every friend who joins using your code.
-  </div>
-  <br>
-  <div class="earn-example" style="margin-top: 12px;">
-    💡 Example:<br>
-    Invite 5 friends => <strong>5 × 100 = KSh 500</strong>
-  </div>
-</div>
-
-      <div class="step reward">
-        <div class="step-icon">🎯</div>
-        <div class="step-text">
-          <strong>Bonus Goal</strong><br>
-          Reach 100 referrals and earn <strong>KSh 5,000</strong> bonus!
-        </div>
-      </div>
-
-    </div>
-
-    <!-- PSYCHOLOGY BOOST -->
-    <div class="guide-proof">
-      <p>
-        🔥 <strong>Why activate first?</strong><br>
-        Only activated users can earn — this keeps the system fair and ensures real payouts.
-      </p>
-
-    </div>
-
-
-
-    <!-- CTA -->
-    <div class="guide-cta">
-      <span onclick="showSection('login')">Start Now</span>
-    </div>
-
-    <!-- GIF DEMO -->
-    <div class="guide-gif">
-      <h3>📺 See How It Works</h3>
-      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2RkNDhkZWp3Mm9yYmRpdTRsdmkzbGVvMWxsbmRqaTFubXhsOXVzbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/g9582DNuQppxC/giphy.gif" alt="App Demo">
-    </div>
+    <button class="btn primary" onclick="closeAgreement()">I Understand</button>
 
   </div>
+
 </section>
 
 <section class="login" style="display: none;">
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">Home</div>
-    <h2>Welcome Back 👋</h2>
-    <p style="padding-top: 10px; font-style: italic;">"Act first and Refer them before they get refered!"</p>
-  </div>
 
   <div class="login-card">
-
+<h1 class="app-title">Earn Reaf</h1>
     <!-- Toggle Buttons -->
-    <div class="auth-toggle">
-      <button id="loginTab" class="active" onclick="switchAuth('login')">Login</button>
-      <button id="signupTab" onclick="switchAuth('signup')">Sign Up</button>
-    </div>
+<div class="auth-switch">
+  <div class="switch-slider"></div>
+  <button id="loginTab" class="switch-btn active" onclick="switchAuth('login')">Login</button>
+  <button id="signupTab" class="switch-btn" onclick="switchAuth('signup')">Sign Up</button>
+</div>
 
 <!-- LOGIN FORM -->
 <form id="loginForm" class="form active">
@@ -1234,187 +96,287 @@ body {
   </div>
 </section>
 
-<section class="payment" style="display: none;">
-  <div class="header">
-    <div class="floating-home" onclick="showSection('home')">back</div>
-<h2>Buy the Book and Get Your Sharing Code</h2>
 
-    <p>Follow steps below</p>
-  </div>
-<!-- Collapsible Payment Guidelines -->
-<div class="payment-rules" style="margin:20px 0; position:relative;">
-  <button class="rules-toggle" onclick="toggleRules()" 
-          style="
-            width:100%; 
-            background:#007bff; 
-            color:white; 
-            font-weight:bold; 
-            padding:12px 16px; 
-            border:none; 
-            border-radius:8px; 
-            cursor:pointer; 
-            display:flex; 
-            align-items:center; 
-            justify-content:space-between;
-            font-size:16px;
-          ">
-    ⚠ Payment Guidelines
-    <span id="rules-arrow" style="transition: transform 0.3s;">&#9660;</span>
-  </button>
+<section class="home"  style="display: none;">
 
-  <div id="rules-content" 
-       style="
-         display:none; 
-         background:#e9f7ef; 
-         color:#155724; 
-         padding:15px 20px; 
-         border-radius:8px; 
-         margin-top:5px; 
-         font-size:14px; 
-         line-height:1.6;
-         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-         position:relative;
-         z-index:1;
-       ">
-    <ul style="padding-left:18px; margin:0;">
-      <li>✅ No need to “test” the system — it auto-detects your payment.</li>
-      <li>💸 Pay less than required → safely refunded.</li>
-      <li>💰 Pay more → refunded minus transaction costs.</li>
-      <li>🚀 Your code activates once a payment from <strong>one of your registered numbers</strong> is confirmed.</li>
-    </ul>
-    <p style="margin-top:10px; font-style:italic; color:#0c5460;">
-      Follow the steps, relax, and your code will be ready once payment is verified!
-    </p>
-  </div>
-</div>
-
-<script>
-function toggleRules() {
-  const content = document.getElementById('rules-content');
-  const arrow = document.getElementById('rules-arrow');
-  if (content.style.display === 'none') {
-    content.style.display = 'block';
-    arrow.style.transform = 'rotate(180deg)';
-  } else {
-    content.style.display = 'none';
-    arrow.style.transform = 'rotate(0deg)';
-  }
+    <!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/254119221690" target="_blank" class="whatsapp-float">
+    <svg viewBox="0 0 32 32" width="24" height="24">
+        <path fill="white" d="M19.11 17.21c-.28-.14-1.64-.81-1.89-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.37-1.63-1.53-1.91-.16-.28-.02-.43.12-.57.13-.13.28-.32.43-.48.14-.16.18-.28.27-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.83-2.02-.22-.52-.44-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3 0 1.36.98 2.67 1.12 2.85.14.18 1.93 2.95 4.67 4.13.65.28 1.16.45 1.55.58.65.21 1.25.18 1.72.11.52-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.2-.52-.34z"/>
+        <path fill="white" d="M26.67 5.33C23.56 2.22 19.42.5 15 .5 6.99.5.5 6.99.5 15c0 2.65.69 5.2 2 7.45L.5 31.5l9.25-2.43c2.16 1.18 4.61 1.8 7.12 1.8h.01c8.01 0 14.5-6.49 14.5-14.5 0-4.42-1.72-8.56-4.71-11.54zM15 28c-2.32 0-4.59-.62-6.57-1.8l-.47-.28-5.49 1.44 1.46-5.35-.31-.49C2.51 19.41 2 17.23 2 15 2 7.83 7.83 2 15 2c3.46 0 6.71 1.35 9.16 3.79C26.65 8.29 28 11.54 28 15c0 7.17-5.83 13-13 13z"/>
+    </svg>
+</a>
+<style>
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-decoration: none;
+    z-index: 999;
+    transition: all 0.3s ease;
 }
-</script>
 
-<div style="text-align:center; margin-top:20px;">
-  <img src="how.png" alt="eBook cover"style="width:150px; height:250px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+</style>
 
-  <br><br>
+<div class="topbar">🔥 Referral App</div>
 
-  <button class="btn primary" style="width: 150px;" onclick="openPaymentModal()">
-    <div>CLICK HERE</div>
-    <strong>KSh 300</strong>
-  </button>
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>🔥 Reaf</h2>
+        <ul>
+            <li>Dashboard</li>
+            <li>Referrals</li>
+            <li>Payout History</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+<div class="main">
+
+    <!-- ALWAYS VISIBLE -->
+<div class="account">
+    <h3 id="username">Account: @</h3>
+    <div class="balance" id="balance">Balance: KSH 0</div>
+
+    <button class="withdraw-btn">Withdraw</button>
+
+    <div class="code-text">
+        This is the code others will use to register with and you will earn after they activate.
+    </div>
+
+    <!-- 🔥 AUTH BUTTON -->
+<div class="auth-btn-row">
+
+
+<!-- LEFT: REF CODE -->
+<div class="code-mini" id="codeMini">
+    <button id="getCodeBtn" onclick="getCode()">
+        Get Code
+    </button>
+</div>
+
+    <!-- RIGHT: AUTH -->
+    <button id="authButton" class="auth-btn-small">Logout</button>
+
+</div>
+</div>
+
+    <!-- SWITCHING CONTENT -->
+    
+    <!-- Dashboard (Subscriptions) -->
+    <div class="section dashboard active">
+        <div class="subscriptions">
+
+
+            <div class="card">
+                <h3>Hustler's Manual (pdf)</h3>
+                <div class="price">KSH 500</div>
+                <div class="referrals">Plus Your Unique <br>Sharing Code</div>
+                <button id="activateBtn" class="subscribe-btn" onclick="openSellPage()">Get Access</button>
+
+            </div>
+
+        </div>
+
+                    <div class="how-it-works">
+
+<h3 class="how-title">How To Benefit</h3>
+
+<ul class="how-list">
+    <li>Buy the Hustler’s Manual for KSH 500 (one-time purchase)</li>
+    <li>Get access to the book and your personal referral Code</li>
+    <li>Share your code with friends who may find the book useful</li>
+    <li>Earn KSH 250 for each successful purchase made through your code</li>
+    <li>Withdraw your earnings anytime starting from your first sale</li>
+</ul>
+</div>
+    </div>
+
+    <!-- Referrals -->
+<!-- Referrals -->
+<!-- Referrals -->
+<div class="section referrals">
+    <h3>Your Referrals</h3>
+
+<table class="payout-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody id="referralsBody"></tbody>
+</table>
+</div>
+
+    <!-- Payouts -->
+<!-- Payouts -->
+<div class="section payoutHistory">
+    <h3>Payout History</h3>
+
+<table class="payout-table">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="payoutBody"></tbody>
+</table>
+</div>
+
 </div>
 
 
-<!-- PAYMENT POPUP -->
-<div id="payment-modal" class="withdraw-modal">
+</div>
+</section>
 
+<!-- =========================
+     M-PESA PAYMENT POPUP
+========================= -->
+<div class="mpesa-popup" id="mpesaPopup">
+  <div class="mpesa-card">
 
-    <div class="payment-card">
+    <h2>Lipa na M-Pesa</h2>
+    <p class="mpesa-sub">Follow the steps below to complete the purchase</p>
 
-      <div class="pay-step">
-        1. Go to <strong>Buy Goods & Services Till</strong>
+            <div class="mpesa-steps">
+
+      <div class="step">1. Buy goods & services Till Number:</div>
+
+      <div class="till-box">
+        <input id="tillNumber" value="3194361" readonly>
+        <button onclick="copyTill()">Copy</button>
       </div>
 
-      <div class="pay-step">
-        <div class="till-row">
-          <span id="tillNumber">3194361</span>
-          <button onclick="copyTill()" class="copy-btn">Copy</button>
+      <div class="step">2. Amount: <b>KSH 500</b></div>
+      <div class="step">3. Confirm you PIN</div>
+<div class="step">
+  4. Enter number used to pay:
+  <input 
+    type="tel" 
+    id="mpesaPhone"
+    placeholder="e.g 2547XXXXXXXX"
+    class="mpesa-phone-input"
+  >
+</div>
+<div id="usedNumbersList" class="used-numbers"></div>
+<p class="payment-warning">
+  This is where all the numbers you used to attempt payment will be listed. 
+  Once one of these numbers completes the payment, you will be activated and receive your code.
+</p>
+
+    </div>
+ 
+   <button id="confirmPayBtn" class="pay-btn" onclick="confirmPaid()">
+    Confirm I Have Paid
+</button>
+
+  </div>
+</div>
+
+
+<div class="reaf-loader">
+
+    <div class="loader-container">
+
+        <div class="title">Earn Reaf</div>
+        <div class="subtitle">Loading</div>
+
+        <div class="spinner"></div>
+
+        <div class="loading-text">
+            Please wait<span class="dots"></span>
         </div>
-      </div>
-
-      <div class="pay-step">
-        2. Amount <strong>KSh 300</strong> <!-- 🔥 updated -->
-      </div>
-
-      <div class="pay-step">
-        3. Confirm PIN.
-      </div>
-
-      <div class="till-row">
-        <span style="font-style: italic;">Bloomtasker Net</span>
-      </div>
-
-      <div class="pay-step">
-        4. Your number used to pay.
-        <input type="text" placeholder="eg. 07....." class="mpesa-input">
-      </div>
-
-      <div class="payment-submissions">
-        <div id="payment-list"></div>
-      </div>
-
-      <button class="btn primary" onclick="confirmPayment()">I Have Paid</button>
-
-      <br><br>
-
-      <!-- CLOSE BUTTON -->
-      <button class="btn cancel-withdraw" onclick="closePaymentModal()">Cancel</button>
 
     </div>
 
 </div>
 
-</section>
 
-<section class="agreement-page" style="display: none;">
-  <div class="header">
-    <h2>User Agreement</h2>
-    <p>Please read carefully</p>
-  </div>
-
-  <div style="padding:15px; font-size:14px; line-height:1.6;">
-
-    <p><strong>Welcome!</strong> By using this platform, you agree to the following:</p>
-
-    <br>
-
-    <p>• Payments must be genuine. Testing or fake submissions are not supported.</p>
-    <p>• The system automatically verifies payments using your submitted number.</p>
-    <p>• Incorrect payments are refunded (transaction costs may apply).</p>
-    <p>• Activation only happens after successful payment confirmation.</p>
-    <p>• Refund are available if code is not issued to you yet, once your code is issued, no refund is allowed but you will be able to withdraw after successfull invites.</p>
-    <p>• Any abuse, fraud, or manipulation may result in account restriction.</p>
-
-    <br>
-
-    <p><strong>Important:</strong> Follow instructions carefully to avoid delays.</p>
-
-    <br>
-
-    <button class="btn primary" onclick="acceptAgreement()">
-      ✅ I Understand & Continue
-    </button>
-
-  </div>
-</section>
+<!-- =========================
+     SELLING SECTION (UPGRADED)
+========================= -->
+<div class="section sellPage" style="display: none;">
 
 
-<!-- Withdraw Modal -->
-<div id="withdraw-modal" class="withdraw-modal">
-  <div class="withdraw-content">
-    <h3>Confirm Withdraw</h3>
-    <p>Are you sure you want to withdraw your funds?</p>
-    
-    <button class="btn confirm-withdraw" onclick="confirmWithdraw()">✅ Confirm Withdraw</button>
-    <button class="btn cancel-withdraw" onclick="closeWithdrawModal()">Cancel</button>
-  </div>
+
+
+    <div class="sell-hero">
+<div class="sell-back-btn" onclick="closeSellPage()">
+    ← close
 </div>
 
-<footer class="footer">
-  <div class="footer-content">
-    <p class="footer-quote">“Act fast — refer them first, before they get refered!”<a href="https://earnreaf.github.io/opportunity/about.html" class="footer-link"> About</a></p>
-    
-  </div>
-</footer>
+        <h2 class="sell-title">Hustlers Manual</h2>
+
+        <p class="sell-subtitle">
+            A step-by-step blueprint showing how people are building real income online using simple systems.
+        </p>
+
+        <div class="sell-price">
+            ONLY <span>KSH 500</span>
+        </div>
+
+        <button class="sell-btn" onclick="openMpesa()">
+            Buy Thee Book Now
+        </button>
+
+        <p class="sell-note">
+            Secure payment via M-Pesa • Instant unlock after confirmation
+        </p>
+
+    </div>
+
+    <div class="sell-grid">
+
+        <div class="sell-card">
+            <h3>📘 What You Get</h3>
+            <ul>
+                <li>Real online income systems</li>
+                <li>Referral money blueprint</li>
+                <li>Step-by-step execution plan</li>
+                <li>Beginner-friendly methods</li>
+            </ul>
+        </div>
+
+        <div class="sell-card">
+            <h3>⚡ Why This Works</h3>
+            <p>
+                No motivation talk. No theory overload.  
+                Just real-world systems people are already using to earn online.
+            </p>
+        </div>
+    <div class="sell-card" style="margin-top:15px;">
+        <h3>🚀 Important</h3>
+        <p>
+            This is not a get-rich-quick promise. Results depend on execution, consistency, and action.
+        </p>
+    </div>
+    </div>
+
+
+
+</div>
+
+
 <!-- ===================================================== -->
 <!-- FIREBASE SDKs -->
 <!-- ===================================================== -->
@@ -1422,1083 +384,8 @@ function toggleRules() {
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 
-<script>
-/* ==========================================================
-   FIREBASE CONFIGURATION
-   IMPORTANT:
-   - Restrict API keys in Firebase Console
-   - Set proper Realtime Database Rules
-   - Never expose admin credentials on frontend
-========================================================== */
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCk65nRivNLguq_Tt8Tl3hea5YfOg44gz8",
-  authDomain: "calculator-85416.firebaseapp.com",
-  databaseURL: "https://calculator-85416-default-rtdb.firebaseio.com",
-  projectId: "calculator-85416",
-  storageBucket: "calculator-85416.firebasestorage.app",
-  messagingSenderId: "288130866574",
-  appId: "1:288130866574:web:98f046172bc05c8dc618df",
-  measurementId: "G-HDQ4B4X21X"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-
-
-// Services
-const auth = firebase.auth();
-const database = firebase.database();
-
-let currentUser = null;
-
-
-/* ==========================================================
-   AUTH PERSISTENCE
-========================================================== */
-auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
-
-/* ==========================================================
-   REGISTER USER
-========================================================== */
-window.addEventListener("DOMContentLoaded", () => {
-    const regForm = document.getElementById("registerForm");
-    const logForm = document.getElementById("loginForm");
-
-    if (regForm) regForm.addEventListener("submit", registerUser);
-    if (logForm) logForm.addEventListener("submit", loginUser);
-});
-
-
-async function registerUser(e) {
-    const agree = document.getElementById("signupAgree");
-
-if (!agree.checked) {
-  alert("You must agree to the User Agreement to continue.");
-  return;
-}
-
-  e.preventDefault();
-
-  const form = e.target;
-  const button = form.querySelector("button[type='submit']");
-  if (button) button.disabled = true;
-
-  // Get inputs
-  const name = document.getElementById("reg_name").value.trim();
-  const email = document.getElementById("reg_email").value.trim();
-  const password = document.getElementById("reg_password").value.trim();
-  let refCode = document.getElementById("reg_referral").value.trim();
-
-  // Validation
-  if (!refCode) {
-    alert("Referral code is required.");
-    button.disabled = false;
-    return;
-  }
-
-  if (password.length < 6) {
-    alert("Password must be at least 6 characters.");
-    button.disabled = false;
-    return;
-  }
-
-  try {
-    const referralsRef = database.ref("referrals");
-    const usersRef = database.ref("users");
-
-    /* ==========================================================
-       FIRST USER → CREATE SYSTEM REF
-    ========================================================== */
-    const allRefsSnapshot = await referralsRef.once("value");
-
-    if (!allRefsSnapshot.exists()) {
-      await referralsRef.child("REF-123456").set({
-        name: "SYSTEM",
-        email: "system@system.com",
-        isSubscribed: false
-      });
-
-      refCode = "REF-123456";
-    }
-
-    /* ==========================================================
-       VALIDATE REFERRAL CODE
-    ========================================================== */
-    const refSnapshot = await referralsRef.child(refCode).once("value");
-
-    if (!refSnapshot.exists()) {
-      alert("Invalid referral code.");
-      button.disabled = false;
-      return;
-    }
-
-    /* ==========================================================
-       PREVENT DUPLICATE EMAILS
-    ========================================================== */
-    const existingUser = await usersRef
-      .orderByChild("email")
-      .equalTo(email)
-      .once("value");
-
-    if (existingUser.exists()) {
-      alert("This email is already registered.");
-      button.disabled = false;
-      return;
-    }
-
-    /* ==========================================================
-       CREATE AUTH USER
-    ========================================================== */
-    const cred = await auth.createUserWithEmailAndPassword(email, password);
-    const userId = cred.user.uid;
-
-    /* ==========================================================
-       GENERATE REF CODE
-    ========================================================== */
-    const newRef = "REF-" + Math.random().toString(36).substr(2, 8).toUpperCase();
-    const now = Date.now();
-
-    /* ==========================================================
-       SAVE USER DATA
-    ========================================================== */
-await usersRef.child(userId).set({
-  name: name,
-  email: email,
-  createdAt: now,
-  isSubscribed: false,
-  balance: 0,
-  ref: newRef,        // user's own code
-  refR: refCode,      // who referred them
-  visits: [],
-  referralCount: 0    // initialize referral count
-});
-
-
-    /* ==========================================================
-       CREATE REFERRAL ENTRY
-    ========================================================== */
-await referralsRef.child(newRef).transaction(current => {
-  return current || {
-    name: name,
-    email: email,
-    isSubscribed: false,
-    referredBy: refCode || null  // store the referrer, null if none
-  };
-});
-
-
-/* ==========================================================
-   ADD TO REFERRER VISITS AND UPDATE COUNT
-========================================================== */
-if (refCode !== "REF-123456") {
-  const refEmail = refSnapshot.val().email;
-
-  const usersSnapshot = await usersRef
-    .orderByChild("email")
-    .equalTo(refEmail)
-    .once("value");
-
-  if (usersSnapshot.exists()) {
-    const refOwnerId = Object.keys(usersSnapshot.val())[0];
-   const visitsRef = usersRef.child(refOwnerId + "/visits/");
-    const referralCountRef = usersRef.child(refOwnerId + "/referralCount");
-
-// Add new referral to visits
-await visitsRef.transaction(current => {
-  current = current || {};
-
-  if (!current[name]) {
-    current[name] = {
-      ref: newRef,
-      isSubscribed: false,
-      joinedAt: Date.now()
-    };
-  }
-
-  return current;
-});
-
-
-
-
-    // Update referral count
-    await referralCountRef.transaction(current => {
-      return (current || 0) + 1;
-    });
-  }
-}
-
-
-    /* ==========================================================
-       SUCCESS
-    ========================================================== */
-    alert("Account created successfully!");
-
-    // Redirect to home or rewards
-    showSection('home');
-
-  } catch (error) {
-    console.error("Registration error:", error);
-    alert(error.message);
-  } finally {
-    button.disabled = false;
-  }
-}
-
-
-document.getElementById("loginForm").addEventListener("submit", loginUser);
-
-async function loginUser(e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const button = form.querySelector("button[type='submit']");
-  if (button) button.disabled = true;
-
-  const email = document.getElementById("login_email").value.trim();
-  const password = document.getElementById("login_password").value.trim();
-
-  if (!email || !password) {
-    alert("Enter email and password");
-    button.disabled = false;
-    return;
-  }
-
-  try {
-    // 🔒 Ensure clean session (logs out any previous user)
-    await auth.signOut();
-
-    // ✅ Login current user
-    const cred = await auth.signInWithEmailAndPassword(email, password);
-
-    // 🧼 Clear form
-    form.reset();
-
-
-    // Go to home
-    showSection('home');
-
-  } catch (error) {
-    console.error("Login error:", error);
-    alert(error.message);
-  } finally {
-    button.disabled = false;
-  }
-}
-
-
-function showSection(sectionClass) {
-    const sections = document.querySelectorAll('section');
-
-    sections.forEach(sec => {
-        if (sec.classList.contains(sectionClass)) {
-            sec.style.display = 'block';
-        } else {
-            sec.style.display = 'none';
-        }
-    });
-
-    // 🔥 Always go to top when switching section
-    window.scrollTo(0, 0);
-    
-}
-
-
-
-function switchAuth(type) {
-    const loginForm = document.getElementById('loginForm');
-    const signupForm = document.getElementById('registerForm');
-
-    const loginTab = document.getElementById('loginTab');
-    const signupTab = document.getElementById('signupTab');
-
-    if (type === 'login') {
-        loginForm.classList.add('active');
-        signupForm.classList.remove('active');
-        loginTab.classList.add('active');
-        signupTab.classList.remove('active');
-    } else {
-        signupForm.classList.add('active');
-        loginForm.classList.remove('active');
-        signupTab.classList.add('active');
-        loginTab.classList.remove('active');
-    }
-}
-
-
-
-async function confirmPayment() {
-    const user = auth.currentUser;
-    const btn = document.querySelector('.btn.primary');
-
-    if (!user) {
-        alert("Please login first to confirm payment");
-        showSection('login');
-        return;
-    }
-
-    const phoneInput = document.querySelector('.mpesa-input').value.trim();
-
-    if (!phoneInput) {
-        alert("Enter the number used to pay");
-        return;
-    }
-
-    // Basic phone validation (Kenyan format)
-    if (!/^0\d{9}$/.test(phoneInput)) {
-        alert("Enter a valid number (e.g. 07XXXXXXXX)");
-        return;
-    }
-
-    try {
-        // Disable the button to prevent multiple clicks
-        btn.disabled = true;
-        btn.innerText = "Submitting...";
-
-        const userId = user.uid;
-        const paymentsRef = database.ref("users/" + userId + "/paymentNumbers");
-
-        // Save number only if it does not already exist
-        await paymentsRef.transaction(current => {
-            current = current || [];
-            if (!current.includes(phoneInput)) current.push(phoneInput);
-            return current;
-        });
-        loadPaymentNumbers();
-        alert("Payment submitted! Awaiting manual approval ⏳");
-        // 🔹 Reset the input field
-        document.querySelector('.mpesa-input').value = "";
-        showSection('home');
-
-    } catch (error) {
-        console.error(error);
-        alert("Error submitting payment");
-    } finally {
-        // Re-enable button just in case
-        btn.disabled = false;
-        btn.innerText = "I Have Paid";
-    }
-}
-
-
-
-
-function listenReferralCount() {
-    if (!currentUser) return;
-
-    const userRef = database.ref("users/" + currentUser.uid);
-
-    // Listen in real-time
-    userRef.on("value", snapshot => {
-        if (!snapshot.exists()) return;
-
-        const userData = snapshot.val();
-        const referralCount = userData.referralCount || 0;
-        const rewardTarget = 100;
-
-        const remaining = Math.max(rewardTarget - referralCount, 0);
-
-        // Update the <strong> element
-        const remainingEl = document.getElementById("referrals-remaining");
-        if (remainingEl) {
-            remainingEl.textContent = remaining;
-        }
-
-        // Optionally update progress bar too
-        const progressBar = document.querySelector(".rewards .progress-bar .progress");
-        if (progressBar) {
-            const percent = Math.min((referralCount / rewardTarget) * 100, 100);
-            progressBar.style.width = percent + "%";
-            progressBar.textContent = Math.round(percent) + "%";
-        }
-    });
-}
-
-// Call after login
-auth.onAuthStateChanged(user => {
-    if (user) {
-        currentUser = user;
-        listenReferralCount();
-    }
-});
-
-// ------------------------------
-// 1️⃣ Enable / Disable Claim Button
-// ------------------------------
-function updateClaimButton(userData) {
-    const rewardTarget = 100;
-    const claimBtn = document.getElementById("claimBtn");
-    if (!claimBtn) return;
-
-    const referralCount = userData.referralCount || 0;
-
-    if (referralCount >= rewardTarget) {
-        claimBtn.disabled = false;          // Enable button
-        claimBtn.textContent = "Claim Now!";
-    } else {
-        claimBtn.disabled = true;           // Keep disabled
-        claimBtn.textContent = `Claim (${referralCount}/${rewardTarget})`;
-    }
-
-    // Optional: update remaining text
-    const remainingEl = document.getElementById("referrals-remaining");
-    if (remainingEl) remainingEl.textContent = Math.max(rewardTarget - referralCount, 0);
-
-    // Optional: update progress bar
-    const progressBar = document.querySelector(".rewards .progress-bar .progress");
-    if (progressBar) {
-        const percent = Math.min((referralCount / rewardTarget) * 100, 100);
-        progressBar.style.width = percent + "%";
-        progressBar.textContent = Math.round(percent) + "%";
-    }
-}
-
-// ------------------------------
-// 2️⃣ Claim Reward Function
-// ------------------------------
-async function claimReward() {
-    if (!currentUser) return alert("User not logged in");
-
-    const userRef = database.ref("users/" + currentUser.uid);
-
-    try {
-        const snapshot = await userRef.once("value");
-        if (!snapshot.exists()) return alert("User data not found");
-
-        const userData = snapshot.val();
-
-        // Only allow if referralCount >= 100
-        if ((userData.referralCount || 0) < 100) {
-            return alert("You need 100 referrals to claim reward!");
-        }
-
-        // Update Firebase: add 5000 to balance and subtract 100 from referralCount
-        await userRef.update({
-            balance: (userData.balance || 0) + 5000,
-            referralCount: (userData.referralCount || 0) - 100
-        });
-
-        alert("Reward claimed! KSh 5,000 added to your balance.");
-
-
-    } catch (error) {
-        console.error("Error claiming reward:", error);
-        alert("Failed to claim reward.");
-    }
-}
-
-// ------------------------------
-// 3️⃣ Attach event listener to button
-// ------------------------------
-const claimBtn = document.getElementById("claimBtn");
-if (claimBtn) claimBtn.addEventListener("click", claimReward);
-
-// ------------------------------
-// 4️⃣ Listen to Firebase changes to auto-update UI
-// ------------------------------
-if (currentUser) {
-    const userRef = database.ref("users/" + currentUser.uid);
-    userRef.on("value", snapshot => {
-        if (!snapshot.exists()) return;
-        const userData = snapshot.val();
-        updateClaimButton(userData);
-    });
-}
-
-
-// Listen for auth state changes
-auth.onAuthStateChanged(user => {
-    if (user) {
-        currentUser = user;
-auth.onAuthStateChanged(user => {
-  if (user) {
-    currentUser = user;
-
-    const userRef = database.ref("users/" + user.uid);
-
-    // 🔥 Listen in real-time
-userRef.on("value", snapshot => {
-  if (!snapshot.exists()) return;
-
-  const userData = snapshot.val();
-
-  const fullName = userData.name || "User";
-  const firstName = fullName.split(" ")[0]; // 🔥 trims to first name
-
-  const welcomeEl = document.getElementById("welcomeText");
-  if (welcomeEl) {
-    welcomeEl.textContent = `👋 Welcome, ${firstName}`;
-  }
-});
-
-  } else {
-    // If logged out
-    const welcomeEl = document.getElementById("welcomeText");
-    if (welcomeEl) {
-      welcomeEl.textContent = "👋 Welcome";
-    }
-  }
-});
-        // Listen to referral count for the current user
-        const userRef = database.ref(`users/${user.uid}/referralCount`);
-        userRef.on("value", snapshot => {
-            const count = snapshot.val() || 0;
-            toggleClaimButton(count);
-        });
-    }
-});
-
-// Enable/disable the claim button based on referral count
-function toggleClaimButton(referralCount) {
-    const rewardTarget = 100;
-    const claimBtn = document.getElementById("claimBtn");
-
-    if (!claimBtn) return;
-
-    if (referralCount >= rewardTarget) {
-        claimBtn.disabled = false;
-        claimBtn.style.backgroundColor = "#4caf50"; // active green
-    } else {
-        claimBtn.disabled = true;
-        claimBtn.style.backgroundColor = "#ccc"; // greyed out
-    }
-}
-
-async function loadReferrals() {
-  const user = auth.currentUser;
-  const listContainer = document.getElementById("referrals-list");
-  listContainer.innerHTML = ""; // clear old content
-
-  // If user is NOT logged in, show Join Now button
-  if (!user) {
-    listContainer.innerHTML = `
-      <div style="text-align:center; margin:20px;">
-        <button onclick="showSection('login')" class="join-btn login">Join Now</button>
-      </div>
-    `;
-    return;
-  }
-
-  const userId = user.uid;
-  const userSnap = await database.ref("users/" + userId).once("value");
-
-  if (!userSnap.exists()) {
-    listContainer.innerHTML = `
-      <div style="text-align:center; margin:20px;">
-        User not found 😢
-        <br>
-        <button onclick="showSection('login')" class="join-btn">Join Now</button>
-      </div>
-    `;
-    return;
-  }
-
-  const userData = userSnap.val();
-
-  // Show "Join to invite" if user is not subscribed
-  if (!userData.isSubscribed) {
-    listContainer.innerHTML = `
-      <div style="text-align:center; margin:20px;">
-        <button onclick="showSection('payment')" class="join-btn activate">Not Activated Yet</button>
-      </div>
-    `;
-    return;
-  }
-
-  const visits = userData.visits || {};
-
-  if (Object.keys(visits).length === 0) {
-    listContainer.innerHTML = `
-      <div style="text-align:center; margin:20px;">
-        No people referred yet 😢
-        <br>
-        <button onclick="handleInvite()" class="join-btn">Invite</button>
-      </div>
-    `;
-    return;
-  }
-
-  // Load each referral dynamically
-  Object.keys(visits).forEach(name => {
-    const v = visits[name]; // { ref, isSubscribed, joinedAt }
-    const statusText = v.isSubscribed ? "✅ Paid" : "⏳ Pending";
-    const statusClass = v.isSubscribed ? "paid" : "pending";
-
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    card.innerHTML = `
-      <div class="user">
-        <div class="avatar"></div>
-        <span>${name}</span>
-      </div>
-      <div class="amount ${statusClass}">${statusText}</div>
-    `;
-
-    listContainer.appendChild(card);
-  });
-}
-
-
-
-
-
-// Call this when showing the section
-function showReferralsSection() {
-  showSection('referrals');
-  loadReferrals();
-}
-
-function setupBalanceListener() {
-  const balanceDiv = document.querySelector(".balance");
-
-  const user = auth.currentUser;
-  if (!user) return;
-
-  const userRef = database.ref("users/" + user.uid + "/balance");
-
-  // Listen for real-time changes
-  userRef.on("value", snapshot => {
-    const balance = snapshot.val() || 0;
-    balanceDiv.textContent = `KSh ${balance.toLocaleString()}`;
-  });
-}
-
-// Call this after user logs in
-auth.onAuthStateChanged(user => {
-  if (user) {
-    setupBalanceListener();
-  }
-});
-
-// ----------------------
-// AUTH BUTTON LOGIC
-// ----------------------
-const joinBtn = document.getElementById("join-btn");
-const logoutBtn = document.getElementById("logout-btn");
-
-function handleJoin() {
-  // If user not logged in, show login or signup section
-  showSection('login');
-}
-function handleLogout() {
-  const confirmLogout = confirm("Are you sure you want to logout?");
-
-  if (!confirmLogout) return;
-
-  auth.signOut()
-    .then(() => {
-      showSection('home');
-    })
-    .catch(err => {
-      console.error(err);
-      alert("Error logging out");
-    });
-}
-
-// Update buttons based on auth state
-auth.onAuthStateChanged(user => {
-  const joinBtn = document.getElementById("join-btn");
-  const logoutBtn = document.getElementById("logout-btn");
-
-  if (user) {
-    // User is logged in
-    joinBtn.style.display = "none";
-    logoutBtn.style.display = "inline-block";
-
-    // Call your existing function to load payment numbers
-    loadPaymentNumbers(); // 🔥 just call it here
-  } else {
-    // User not logged in
-    joinBtn.style.display = "inline-block";
-    logoutBtn.style.display = "none";
-  }
-});
-
-
-async function handleInvite() {
-  const user = auth.currentUser;
-
-  if (!user) {
-    alert("Please log in first to join and invite friends!");
-    showSection('login'); // redirect to login
-    return;
-  }
-
-  const userId = user.uid;
-  const userSnap = await database.ref("users/" + userId).once("value");
-
-  if (!userSnap.exists()) {
-    alert("User not found. Please log in again.");
-    return;
-  }
-
-  const userData = userSnap.val();
-
-  if (userData.isSubscribed) {
-    showSection('sharecode');
-    loadShareCode();
-  } else {
-    // Open payment section if not subscribed
-    showSection('payment');
-  }
-}
-
-async function loadShareCode() {
-  const user = auth.currentUser;
-  const codeEl = document.getElementById("user-ref-code");
-
-  if (!user) {
-    codeEl.textContent = "Login to see your code";
-    return;
-  }
-
-  const userId = user.uid;
-  const userSnap = await database.ref("users/" + userId).once("value");
-
-  if (!userSnap.exists()) {
-    codeEl.textContent = "User not found";
-    return;
-  }
-
-  const userData = userSnap.val();
-  codeEl.textContent = userData.ref || "No code found";
-}
-
-function copyRefCode() {
-  const codeEl = document.getElementById("user-ref-code");
-  const text = codeEl.textContent;
-
-  if (!text || text === "No code found" || text === "Login to see your code") {
-    alert("Nothing to copy!");
-    return;
-  }
-
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Referral code copied to clipboard! 🚀");
-  }).catch(err => {
-    console.error(err);
-    alert("Failed to copy code.");
-  });
-}
-async function loadPaymentNumbers() {
-  const user = auth.currentUser;
-  const container = document.getElementById("payment-list");
-  container.innerHTML = ""; // clear old content
-
-  if (!user) return;
-
-  const userId = user.uid;
-  const userSnap = await database.ref("users/" + userId).once("value");
-
-  if (!userSnap.exists()) return;
-
-  const userData = userSnap.val();
-  const numbers = userData.paymentNumbers || [];
-
-  if (numbers.length === 0) {
-    container.innerHTML = `<div style="text-align:center; margin:20px;">No payment numbers submitted yet</div>`;
-    return;
-  }
-
-  // Display each number with ✅ Submitted
-  numbers.forEach(num => {
-    const div = document.createElement("div");
-    
-    div.textContent = `✅${num} paid`;
-    container.appendChild(div);
-  });
-}
-
-const rulesContent = document.getElementById("rules-content");
-const rulesArrow = document.getElementById("rules-arrow");
-
-// Toggle when button clicked
-function toggleRules() {
-  if (rulesContent.style.display === "none") {
-    rulesContent.style.display = "block";
-    rulesArrow.style.transform = "rotate(180deg)";
-  } else {
-    rulesContent.style.display = "none";
-    rulesArrow.style.transform = "rotate(0deg)";
-  }
-}
-
-// Collapse when clicking outside
-document.addEventListener("click", function(e) {
-  const rulesDiv = document.querySelector(".payment-rules");
-  if (!rulesDiv.contains(e.target)) {
-    rulesContent.style.display = "none";
-    rulesArrow.style.transform = "rotate(0deg)";
-  }
-});
-
-// Ensure collapsed on load
-rulesContent.style.display = "none";
-rulesArrow.style.transform = "rotate(0deg)";
-
-async function handleWithdrawClick() {
-  const user = auth.currentUser;
-
-  if (!user) {
-    alert("Please log in first to withdraw funds");
-    showSection("login");
-    return;
-  }
-
-  try {
-    // Get user balance from Firebase
-    const userId = user.uid;
-    const userSnap = await database.ref("users/" + userId).once("value");
-
-    if (!userSnap.exists()) {
-      alert("User not found");
-      return;
-    }
-
-    const userData = userSnap.val();
-    const balance = userData.balance || 0;
-
-    if (balance < 100) {
-      alert("Your balance is below KSh 100. You need at least KSh 100 to withdraw.");
-      return;
-    }
-
-    // Open withdraw modal
-    const modal = document.getElementById("withdraw-modal");
-    modal.style.display = "flex";
-
-    // Close if click outside the content
-    modal.addEventListener("click", function (e) {
-      if (e.target === modal) {
-        closeWithdrawModal();
-      }
-    });
-
-  } catch (error) {
-    console.error(error);
-    alert("Error checking balance");
-  }
-}
-
-function closeWithdrawModal() {
-  document.getElementById("withdraw-modal").style.display = "none";
-}
-
-async function confirmWithdraw() {
-  const user = auth.currentUser;
-  if (!user) {
-    alert("Please log in first to withdraw funds");
-    showSection("login");
-    return;
-  }
-
-  try {
-    const userId = user.uid;
-    const userSnap = await database.ref("users/" + userId).once("value");
-
-    if (!userSnap.exists()) {
-      alert("User not found");
-      return;
-    }
-
-    const userData = userSnap.val();
-    const balance = userData.balance || 0;
-
-    if (balance < 100) {
-      alert("Balance too low to withdraw (min KSh 100)");
-      return;
-    }
-
-    // 1️⃣ Reset user balance to 0
-    await database.ref("users/" + userId).update({
-      balance: 0
-    });
-
-    // 2️⃣ Save withdrawal request
-const requestData = {
-  name: userData.name || "Unknown",
-  amount: balance,
-  email: userData.email || "",
-  paymentNumbers: userData.paymentNumbers || [],
-  ref: userData.ref || "",
-  refR: userData.refR || "",
-  date: Date.now(),
-  status: "pending" // 🔥 default status
-};
-
-
-    const requestsRef = database.ref("withdrawRequests");
-
-    // Push new request
-    await requestsRef.push(requestData);
-
-    alert("Withdraw request submitted! Await manual approval ⏳");
-    closeWithdrawModal();
-
-  } catch (error) {
-    console.error(error);
-    alert("Error submitting withdraw request");
-  }
-}
-
-async function loadWithdrawHistory() {
-  const container = document.getElementById("withdraw-list");
-  container.innerHTML = "";
-
-  const user = auth.currentUser;
-
-  // ❌ Not logged in
-  if (!user) {
-    container.innerHTML = `
-      <div style="text-align:center; margin:20px;">
-        <button onclick="showSection('login')" class="join-btn">
-          Log in First
-        </button>
-      </div>
-    `;
-    return;
-  }
-
-  try {
-    const userSnap = await database.ref("users/" + user.uid).once("value");
-    if (!userSnap.exists()) {
-      container.innerHTML = "User not found";
-      return;
-    }
-
-    const userData = userSnap.val();
-    const userEmail = userData.email;
-
-    // Get all withdraw requests
-    const requestsSnap = await database.ref("withdrawRequests").once("value");
-
-    if (!requestsSnap.exists()) {
-      container.innerHTML = `
-        <div style="text-align:center; margin:20px;">
-          No payment history 😢
-        </div>
-      `;
-      return;
-    }
-
-    const requests = requestsSnap.val();
-    let userRequests = [];
-
-    // Filter only this user's requests
-    Object.keys(requests).forEach(key => {
-      const req = requests[key];
-      if (req.email === userEmail) {
-        userRequests.push(req);
-      }
-    });
-
-    // 😢 No requests for this user
-    if (userRequests.length === 0) {
-      container.innerHTML = `
-        <div style="text-align:center; margin:20px;">
-          No payment history 😢
-        </div>
-      `;
-      return;
-    }
-
-    // 💰 Show requests
-    userRequests.reverse().forEach(req => {
-      const status = req.status === "paid" ? "✅ Paid" : "⏳ Pending";
-      const statusClass = req.status === "paid" ? "paid" : "pending";
-
-      const card = document.createElement("div");
-      card.classList.add("card");
-
-      card.innerHTML = `
-        <div class="user">
-          <div class="avatar"></div>
-          <span>KSh ${req.amount}</span>
-        </div>
-        <div class="amount ${statusClass}">${status}</div>
-      `;
-
-      container.appendChild(card);
-    });
-
-  } catch (error) {
-    console.error(error);
-    container.innerHTML = "Error loading history";
-  }
-}
-
-function showWithdrawHistory() {
-  showSection('withdrawhistory'); // open the section
-  loadWithdrawHistory();          // load data
-}
-
-function openAgreement() {
-  showSection('agreement-page');
-}
-
-function acceptAgreement() {
-  // Auto check checkbox
-  const checkbox = document.getElementById("signupAgree");
-  if (checkbox) checkbox.checked = true;
-
-  // Go back to signup
-  showSection('login');
-}
-
-const signupBtn = document.querySelector("#registerForm button");
-
-document.getElementById("signupAgree").addEventListener("change", (e) => {
-  signupBtn.disabled = !e.target.checked;
-});
-
-// Disable scroll restoration
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
-// Always go to top
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
-function openPaymentModal() {
-  document.getElementById("payment-modal").style.display = "flex";
-}
-
-function closePaymentModal() {
-  document.getElementById("payment-modal").style.display = "none";
-}
-const paymentModal = document.getElementById("payment-modal");
-const paymentCard = paymentModal.querySelector(".payment-card");
-
-// Close ONLY when clicking outside
-paymentModal.addEventListener("click", (e) => {
-    if (e.target === paymentModal) {
-        closePaymentModal();
-    }
-});
-
-// Prevent clicks inside from closing
-paymentCard.addEventListener("click", (e) => {
-    e.stopPropagation();
-});
-
-function copyTill() {
-  const tillText = document.getElementById("tillNumber").innerText;
-  const btn = document.querySelector(".copy-btn");
-
-  navigator.clipboard.writeText(tillText).then(() => {
-    btn.innerText = "Copied!";
-    setTimeout(() => {
-      btn.innerText = "Copy";
-    }, 2000);
-  });
-}
-
-</script>
+<!-- Your JS -->
+<script src="app.js"></script>
 
 </body>
 </html>

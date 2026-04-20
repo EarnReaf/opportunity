@@ -1,0 +1,1186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    width: 220px;
+    background: #121212;
+    padding: 20px;
+    border-right: 1px solid #222;
+}
+
+.sidebar h2 {
+    color: #ff0050;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin: 15px 0;
+    cursor: pointer;
+    color: #aaa;
+    transition: 0.2s;
+}
+
+.sidebar li:hover {
+    color: #fff;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* =========================
+   TOPBAR (MOBILE)
+========================= */
+.topbar {
+    display: none;
+    background: #121212;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff0050;
+}
+
+/* =========================
+   ACCOUNT CARD
+========================= */
+.account {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.account h3 {
+    margin-bottom: 10px;
+}
+
+.balance {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #00ffaa;
+}
+
+.withdraw-btn {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.withdraw-btn:hover {
+    opacity: 0.85;
+}
+
+/* =========================
+   SUBSCRIPTION CARDS
+========================= */
+.subscriptions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 250px;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #222;
+    transition: 0.3s;
+    max-width: fit-content;
+    
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #ff0050;
+}
+
+.price {
+    font-size: 22px;
+    color: #ff0050;
+    margin: 10px 0;
+}
+
+.referrals {
+    color: #00ffaa;
+    margin-bottom: 15px;
+}
+
+.subscribe-btn {
+    background: #ff0050;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.subscribe-btn:hover {
+    background: #ff2a6d;
+}
+
+/* =========================
+   SECTIONS (IMPORTANT FIX)
+========================= */
+.section {
+    display: none;
+    animation: fade 0.3s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+/* =========================
+   TABLE (REFERRALS + PAYOUTS)
+========================= */
+.payout-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.payout-table th,
+.payout-table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #222;
+}
+
+.payout-table th {
+    color: #ff0050;
+    background: #121212;
+    font-size: 14px;
+}
+
+.payout-table td {
+    color: #ddd;
+}
+
+.payout-table tr:hover {
+    background: #222;
+}
+
+/* =========================
+   STATUS COLORS
+========================= */
+.status-paid {
+    color: #00ff99 !important;
+    font-weight: bold;
+}
+
+.status-activated {
+    color: #00ff99 !important;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: #ffb300 !important;
+    font-weight: bold;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+.section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* =========================
+   AUTH WRAPPER
+========================= */
+.login {
+    position: fixed;
+    inset: 0;
+    background: #0f0f0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* =========================
+   TABS
+========================= */
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.auth-tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #1a1a1a;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #222;
+}
+
+.auth-tabs .active-tab {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    color: white;
+}
+
+/* =========================
+   CARD
+========================= */
+.auth-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fade 0.3s ease;
+}
+
+.auth-card h2 {
+    color: #ff0050;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.auth-card input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: #121212;
+    color: #fff;
+    outline: none;
+}
+
+.auth-card input:focus {
+    border-color: #ff0050;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.auth-btn {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.auth-btn:hover {
+    transform: scale(1.03);
+}
+
+/* =========================
+   TEXT LINKS
+========================= */
+.auth-text {
+    font-size: 13px;
+    color: #aaa;
+    text-align: center;
+}
+
+.auth-text span {
+    color: #ff0050;
+    cursor: pointer;
+}
+
+/* =========================
+   HIDE FORM
+========================= */
+.hidden {
+    display: none;
+}
+
+/* =========================
+   LOGIN / AUTH UI (MATCH HOME STYLE)
+========================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    color: #ff0050;
+}
+
+.floating-home {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: #1a1a1a;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #222;
+    transition: 0.2s;
+}
+
+.floating-home:hover {
+    border-color: #ff0050;
+}
+
+/* CARD */
+.login-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* TOGGLE BUTTONS */
+.auth-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.auth-toggle button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #222;
+    background: #121212;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.auth-toggle button.active {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    color: white;
+}
+
+/* FORMS */
+.form {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form.active {
+    display: flex;
+}
+
+.form label {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.form input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: #121212;
+    color: #fff;
+}
+
+.form input:focus {
+    border-color: #ff0050;
+}
+
+/* BUTTON */
+.btn.primary {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn.primary:hover {
+    transform: scale(1.03);
+}
+
+/* AGREEMENT */
+.agreement-box {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.agreement-link {
+    color: #ff0050;
+    cursor: pointer;
+}
+
+/* NOTE */
+.form-note {
+    font-size: 12px;
+    color: #777;
+    text-align: center;
+}
+
+/* =========================
+   MODERN CONNECTED SWITCH
+========================= */
+
+.auth-switch {
+    position: relative;
+    display: flex;
+    background: #121212;
+    border-radius: 30px;
+    border: 1px solid #222;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* SLIDING BACKGROUND */
+.switch-slider {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    border-radius: 30px;
+    transition: 0.3s ease;
+    left: 0;
+}
+
+/* BUTTONS */
+.switch-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.switch-btn.active {
+    color: #fff;
+}
+
+.form {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.25s ease;
+    position: absolute;
+    width: 100%;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+
+
+.form.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+}
+
+.app-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+
+    background-clip: text;              /* ✅ standard */
+    -webkit-background-clip: text;      /* ✅ Safari/Chrome */
+
+    -webkit-text-fill-color: transparent;
+
+    letter-spacing: 1px;
+}
+
+.app-subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   AGREEMENT SCREEN
+========================= */
+
+.agreement-section {
+    position: fixed;
+    inset: 0;
+    background: #0f0f0f;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.agreement-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    max-width: 500px;
+    width: 90%;
+    animation: fade 0.3s ease;
+}
+
+.agreement-card h2 {
+    color: #ff0050;
+    margin-bottom: 15px;
+}
+
+.agreement-content {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.agreement-content ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.auth-btn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* LEFT GROUP */
+.code-mini {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 🔥 AUTO FIT INPUT TO TEXT */
+.code-mini input {
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 12px;
+
+    width: max-content;     /* key */
+    min-width: 60px;        /* fallback */
+    max-width: 200px;
+
+    text-align: center;
+    letter-spacing: 1px;
+
+    outline: none;
+
+    display: inline-block;
+}
+
+/* COPY BUTTON */
+.code-mini button {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* AUTH BUTTON */
+.auth-btn-small {
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    background: #121212;
+    color: #fff;
+    cursor: pointer;
+    width: auto;
+}
+
+.auth-btn-small:hover {
+    border-color: #ff0050;
+}
+
+
+.code-text {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    margin-bottom: 6px;
+    max-width: 220px;
+    padding-top: 10px;
+}
+
+/* =========================
+   M-PESA POPUP
+========================= */
+.mpesa-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+
+    display: none;
+
+    align-items: flex-start;   /* 🔥 instead of center */
+    justify-content: center;
+
+    padding: 20px;             /* 🔥 gives breathing space */
+    overflow-y: auto;
+
+        scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE/Edge */
+      z-index: 100000; /* 🔥 ADD THIS */
+}
+
+
+.mpesa-card {
+    width: 90%;
+    max-width: 420px;
+    background: #1a1a1a;
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 20px;
+    animation: fade 0.3s ease;
+
+    max-height: 90vh;        /* 🔥 prevents cutting */
+    overflow-y: auto;        /* 🔥 scroll inside card */
+        scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE/Edge */
+}
+
+
+.mpesa-card h2 {
+    color: #ff0050;
+    margin-bottom: 5px;
+}
+
+.mpesa-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.mpesa-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.step {
+    font-size: 13px;
+    color: #ddd;
+    background: #121212;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #222;
+}
+
+.till-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.till-box input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: #0f0f0f;
+    color: #00ffaa;
+    text-align: center;
+}
+
+.till-box button {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    color: white;
+}
+
+.mpesa-close {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background: #ff0050;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.mpesa-phone-input {
+    margin-top: 8px;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    background: linear-gradient(145deg, #0f0f0f, #141414);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+    letter-spacing: 1px;
+}
+
+/* focus glow */
+.mpesa-phone-input:focus {
+    border-color: #ff0050;
+    box-shadow: 0 0 0 2px rgba(255, 0, 80, 0.2);
+}
+
+/* placeholder style */
+.mpesa-phone-input::placeholder {
+    color: #666;
+    font-size: 13px;
+}
+
+/* subtle hover */
+.mpesa-phone-input:hover {
+    border-color: #333;
+}
+
+.mpesa-steps .step {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.used-numbers {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.used-number-item {
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+.pay-btn {
+    background-color: #28a745; /* green */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.pay-btn:active {
+    background-color: #1e7e34;
+    transform: scale(0.98);
+}
+
+.payment-warning {
+    font-size: 12px;
+    color: #ffb300;
+    background: rgba(255, 179, 0, 0.1);
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.how-it-works {
+    margin-top: 15px;
+}
+
+.how-title {
+    color: #ff0050;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 17px;
+}
+
+.how-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #ddd;
+}
+
+.how-list li {
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.how-list li::before {
+    content: "• ";
+    color: #ff0050;
+}
+
+.how-example {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #aaa;
+    font-style: italic;
+    text-align: left;
+}
+
+/* =========================
+   SELLING PAGE
+========================= */
+
+.sellPage {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers everything */
+    gap: 20px;
+}
+
+
+.sell-hero {
+    background: #1a1a1a;
+    border: 1px solid #222;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+
+    max-width: 500px;   /* 🔥 key */
+    width: 100%;
+}
+
+
+.sell-badge {
+    display: inline-block;
+    background: rgba(255,0,80,0.15);
+    color: #ff0050;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.sell-title {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.sell-subtitle {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.sell-price {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #00ffaa;
+}
+
+.sell-price span {
+    color: #ff0050;
+    font-weight: bold;
+}
+
+.sell-btn {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sell-btn:hover {
+    transform: scale(1.05);
+}
+
+.sell-note {
+    font-size: 11px;
+    color: #777;
+    margin-top: 10px;
+}
+
+.sell-grid {
+    display: flex;
+    flex-direction: column;  /* 🔥 stack downward */
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+
+.sell-card {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #222;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+
+.sell-card h3 {
+    color: #ff0050;
+    margin-bottom: 10px;
+}
+
+.sell-card ul {
+    padding-left: 18px;
+    color: #ccc;
+    font-size: 13px;
+}
+
+.sell-card p {
+    color: #bbb;
+    font-size: 13px;
+}
+
+
+.sell-back-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    background: rgba(0,0,0,0.6);
+    border: 1px solid #222;
+    color: #fff;
+
+    padding: 8px 12px;
+    border-radius: 20px;
+
+    font-size: 13px;
+    cursor: pointer;
+
+    z-index: 999;
+    transition: 0.2s;
+}
+
+.sell-back-btn:hover {
+    background: rgba(255,0,80,0.2);
+    border-color: #ff0050;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        border-right: none;
+        border-bottom: 1px solid #222;
+    }
+
+    .sidebar h2 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 15px;
+    }
+
+    .sidebar li {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .topbar {
+        display: none;
+    }
+}
+
+/* =========================
+   ONLY LOADING PAGE SCOPE
+========================= */
+
+.reaf-loader * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* wrapper isolates everything */
+.reaf-loader {
+    background: #0f0f0f;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* center container */
+.reaf-loader .loader-container {
+    text-align: center;
+    animation: reafFadeIn 1s ease;
+}
+
+/* brand */
+.reaf-loader .title {
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.reaf-loader .subtitle {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+/* spinner */
+.reaf-loader .spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #222;
+    border-top: 4px solid #ff0050;
+    border-radius: 50%;
+    animation: reafSpin 1s linear infinite;
+    margin: auto;
+}
+
+/* text */
+.reaf-loader .loading-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* dots */
+.reaf-loader .dots::after {
+    content: "";
+    animation: reafDots 1.5s infinite;
+}
+
+/* =========================
+   ANIMATIONS (SCOPED NAMES)
+========================= */
+
+@keyframes reafSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes reafFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reafDots {
+    0% { content: ""; }
+    33% { content: "."; }
+    66% { content: ".."; }
+    100% { content: "..."; }
+}
+
+.reaf-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #0f0f0f;
+}
+
+.reaf-loader.hide {
+    display: none !important;
+}
+
