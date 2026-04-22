@@ -77,13 +77,13 @@ auth.onAuthStateChanged(async (user) => {
 
             if (btn) {
                 if (data.isSubscribed === true) {
-                    btn.innerText = "Unlocked";
+                    btn.innerText = "Purchased";
                     btn.style.background = "#00c853";
                     btn.onclick = null;
                 } else {
-                    btn.innerText = "Get Access";
+                    btn.innerText = "Get Started";
                     btn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
-                    btn.onclick = openSellPage;
+                    btn.onclick = openMpesa;
                 }
             }
 
@@ -522,7 +522,7 @@ function requestWithdraw(user) {
 
         // 🔒 1. CHECK ACTIVATION
         if (!isActive) {
-            alert("Activate your account first");
+            alert("Get your code first");
             openMpesa();
             return;
         }
@@ -689,8 +689,8 @@ function listenReferralCode(uid) {
 
 
 function getCode() {
-    alert("Activate first and get your Unique Code");
-    openSellPage();
+    alert("Get your code first");
+    openMpesa();
 }
 
 function showGetCode() {
@@ -842,33 +842,6 @@ function showLoader() {
     document.querySelector(".home").style.display = "none";
 }
 
-function openSellPage() {
-
-    // 🔥 hide ALL sections properly
-    document.querySelectorAll(".section").forEach(sec => {
-        sec.classList.remove("active");
-        sec.style.display = "none";
-    });
-
-    // 🔥 also hide other main views (important in your code)
-    const home = document.querySelector(".home");
-    const login = document.querySelector(".login");
-
-    if (home) home.style.display = "none";
-    if (login) login.style.display = "none";
-
-    // 🔥 show selling page
-    const sellPage = document.querySelector(".sellPage");
-
-    if (sellPage) {
-        sellPage.classList.add("active");
-        sellPage.style.display = "flex"; // ensures it shows even if CSS conflicts
-    }
-}
 
 
-function closeSellPage() {
-
-location.reload();
-}
 
