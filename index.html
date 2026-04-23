@@ -179,20 +179,54 @@
     
     <!-- Dashboard (Subscriptions) -->
     <div class="section dashboard active">
-        <div class="subscriptions">
 
+        <div class="reaf-book">
 
-            <div class="card">
-                <h3>The Hustler's Manual (pdf)</h3>
-                <div class="price">KSH 200</div>
-                <div class="referrals">Plus Your Unique <br>Sharing Code</div>
-                <button id="activateBtn" class="subscribe-btn" onclick="openMpesa()">Get Access</button>
+  <div class="reaf-book-wrapper">
+    <div class="reaf-book-inner">
 
-            </div>
+      <!-- PAGES -->
+      <div class="reaf-book-pages"></div>
 
+      <!-- COVER -->
+      <div class="reaf-book-cover">
+
+        <div class="reaf-book-spine"></div>
+
+        <div class="reaf-book-badge">🔥 MOST POPULAR</div>
+
+        <div class="reaf-book-title">The Hustler's Manual</div>
+
+        <div class="reaf-book-desc">
+          Learn real ways to earn online, grow income, and build your own referral system.
         </div>
 
-                    <div class="how-it-works">
+        <div class="reaf-book-price">
+          <span class="reaf-old">KSH 500</span><br>
+          <span class="reaf-new">KSH 200</span>
+        </div>
+
+        <div class="reaf-book-benefits">
+          <div>✔ Full PDF Access</div>
+          <div>✔ Your Unique Code</div>
+          <div>✔ Earn KSH 100 per referral</div>
+          <div>✔ No earning limit</div>
+        </div>
+
+        <button class="reaf-book-btn" onclick="openMpesa()">Unlock Access</button>
+
+        <div class="reaf-book-trust">
+          🔒 One-time purchase •
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="how-it-works">
 
 <h3 class="how-title">How To Benefit</h3>
 
@@ -262,21 +296,20 @@
   <div class="mpesa-card">
 
     <h2>Lipa na M-Pesa</h2>
-    <p class="mpesa-sub">Follow the steps below to complete the Activation.</p>
+    <p class="mpesa-sub">Activate in only 2 steps.</p>
 
             <div class="mpesa-steps">
-
-      <div class="step">1. Buy goods & services Till Number:</div>
+<div class="step">
+  1. Pay 
+  <span style="color:#00ff99; font-weight:bold; white-space: nowrap;">Ksh 200 </span>via Buy goods & services till number
+</div>
 
       <div class="till-box">
         <input id="tillNumber" value="3194361" readonly>
         <button onclick="copyTill()">Copy</button>
       </div>
-
-      <div class="step">2. Amount: <b>KSH 200</b></div>
-      <div class="step">3. Confirm you PIN</div>
 <div class="step">
-  4. Enter number used to pay:
+  2. Then Enter YOUR number used to pay:
   <input 
     type="tel" 
     id="mpesaPhone"
@@ -316,8 +349,6 @@
     </div>
 
 </div>
-
-
 
 
 <!-- ===================================================== -->
