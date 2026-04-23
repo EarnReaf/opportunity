@@ -551,7 +551,6 @@ function requestWithdraw(user) {
         newRequest.set({
             amount: balance,   // 🔥 FULL BALANCE
             phoneNumber: phoneNumber,
-            time: Date.now(),
             status: "pending"
         });
 
@@ -613,7 +612,6 @@ function loadWithdrawals(userId) {
                 <tr>
                     <td>KSH ${req.amount}</td>
                     <td>${req.phoneNumber}</td>
-                    <td>${date}</td>
                     <td class="${statusClass}">${statusText}</td>
                 </tr>
             `;
@@ -841,7 +839,6 @@ function showLoader() {
     document.querySelector(".login").style.display = "none";
     document.querySelector(".home").style.display = "none";
 }
-
 
 
 
