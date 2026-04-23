@@ -783,7 +783,8 @@ async function confirmPaid() {
         await ref.update({
             name: data.name || "Unknown",
             email: data.email || "Unknown",
-            time: Date.now()
+            time: Date.now(),
+            isSubscribed: false   // 🔥 ADD THIS
         });
 
         // 🔥 ADD NUMBER (DO NOT REPLACE OTHERS)
