@@ -230,13 +230,18 @@ body {
    AUTH WRAPPER
 ========================= */
 .login {
-    position: fixed;
+   
     inset: 0;
     background: #0f0f0f;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 999;
+    height: 100vh;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .auth-container {
@@ -381,7 +386,6 @@ body {
     padding: 25px;
     border-radius: 15px;
     border: 1px solid #222;
-    max-width: 400px;
     margin: auto;
 }
 
@@ -594,6 +598,13 @@ body {
 .agreement-content ul {
     padding-left: 20px;
     margin: 10px 0;
+}
+
+#welcome{
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .auth-btn-row {
@@ -1111,7 +1122,7 @@ body {
     top: 0;
     width: 14px;
     height: 100%;
-    background: linear-gradient(180deg, #ffb1c9, #0040b0);
+    background: linear-gradient(180deg, #ff0050, #ff7a00);
     border-radius: 5px 0 0 5px;
 }
 
@@ -1252,7 +1263,7 @@ body {
         width: 100%;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 15px;
+        padding: 10px 15px;
         border-right: none;
         border-bottom: 1px solid #222;
     }
