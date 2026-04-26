@@ -199,6 +199,24 @@ body {
     background: #222;
 }
 
+.switch-text {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    color: #555;
+}
+
+.switch-text span {
+    color: #1a73e8;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.switch-text span:hover {
+    text-decoration: underline;
+}
+
+
 /* =========================
    STATUS COLORS
 ========================= */
