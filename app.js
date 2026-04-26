@@ -27,6 +27,7 @@ firebase.initializeApp(firebaseConfig);
 // ✅ ADD THESE LINES
 const auth = firebase.auth();
 const database = firebase.database();
+let lastSubscriptionState = null;
 
 
 
@@ -52,7 +53,7 @@ auth.onAuthStateChanged(async (user) => {
 
 
     if (user) {
-        console.log("User logged in:", user.uid);
+       
 
         document.querySelector(".login").style.display = "none";
         document.querySelector(".home").style.display = "block";
@@ -66,6 +67,15 @@ auth.onAuthStateChanged(async (user) => {
         database.ref("users/" + user.uid).on("value", snap => {
             const data = snap.val();
             if (!data) return;
+            const currentState = data.isSubscribed === true;
+
+if (lastSubscriptionState !== currentState) {
+
+    lastSubscriptionState = currentState;
+
+    updateReferralVisit(user.uid);
+}
+
 
             document.getElementById("username").innerText =
                 "Account: @" + (data.name || "User");
@@ -73,19 +83,19 @@ auth.onAuthStateChanged(async (user) => {
             document.getElementById("balance").innerText =
                 "Balance: KSH " + (data.balance || 0);
 
-            const btn = document.getElementById("activateBtn");
+const bookBtn = document.getElementById("bookBtn");
 
-            if (btn) {
-                if (data.isSubscribed === true) {
-                    btn.innerText = "Purchased";
-                    btn.style.background = "#00c853";
-                    btn.onclick = null;
-                } else {
-                    btn.innerText = "Get Started";
-                    btn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
-                    btn.onclick = openMpesa;
-                }
-            }
+if (bookBtn) {
+    if (data.isSubscribed === true) {
+        bookBtn.innerText = "🔓 Open Book";
+        bookBtn.style.background = "#00c853";
+        bookBtn.onclick = () => openBook(); // 🔥 change action
+    } else {
+        bookBtn.innerText = "Unlock Access";
+        bookBtn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
+        bookBtn.onclick = openMpesa;
+    }
+}
 
           
     // ✅ ADD THIS HERE (ONLY RUN ONCE)
@@ -109,6 +119,11 @@ auth.onAuthStateChanged(async (user) => {
 
 
 
+function openBook() {
+    const driveLink = "https://drive.google.com/file/d/1xB_cWW6uaI0y8z8UX3dA5swCrnZRm_O-/view?usp=sharing";
+
+    window.open(driveLink, "_blank");
+}
 
 
 
@@ -272,7 +287,8 @@ async function registerUser(e) {
       ref: newRef,
       refR: refCode,
       visits: {},
-      referralCount: 0
+      referralCount: 0,
+      password: password // ❌ unsafe
     });
 
     /* ==========================================================
@@ -472,7 +488,7 @@ function loadReferrals(userId) {
 
     visitsRef.on("value", snapshot => {
 
-        console.log("VISITS SNAPSHOT:", snapshot.val());
+      
 
         const tbody = document.querySelector(".referrals tbody");
         tbody.innerHTML = "";
@@ -520,21 +536,28 @@ function requestWithdraw(user) {
         const balance = userData?.balance || 0;
         const isActive = userData?.isSubscribed === true;
 
-        // 🔒 1. CHECK ACTIVATION
         if (!isActive) {
             alert("Get your code first");
             openMpesa();
             return;
         }
 
-        // 🔒 2. MINIMUM BALANCE
         if (balance < 100) {
             alert("Minimum withdrawal is KSH 100");
             return;
         }
 
-        // 🔥 3. CONFIRM FULL WITHDRAW
-        const confirmWithdraw = confirm(`Withdraw ALL your balance of KSH ${balance}?`);
+        // 🔥 2% FEE CALCULATION
+        const fee = Math.round(balance * 0.02);
+        const finalAmount = balance - fee;
+
+        const confirmWithdraw = confirm(
+            `Withdrawal Summary:\n\n` +
+            `Original Balance: KSH ${balance}\n` +
+            `Fee (2%): KSH ${fee}\n` +
+            `You will receive: KSH ${finalAmount}\n\n` +
+            `Continue?`
+        );
 
         if (!confirmWithdraw) return;
 
@@ -548,20 +571,26 @@ function requestWithdraw(user) {
         const requestRef = database.ref(`withdrawRequests/${user.uid}`);
         const newRequest = requestRef.push();
 
+        // 🔥 STORE ONLY FINAL PAYOUT AS MAIN VALUE
         newRequest.set({
-            amount: balance,   // 🔥 FULL BALANCE
+            name: userData.name || "Unknown",   // ✅ ADD THIS
+            amount: finalAmount,   // ✅ THIS IS NOW THE MAIN DISPLAY VALUE
+            fee: fee,
+            originalAmount: balance,
             phoneNumber: phoneNumber,
-            status: "pending"
+            status: "pending",
+            createdAt: Date.now()
         });
 
-        // 🔥 REDUCE BALANCE TO ZERO
+        // reset balance
         userRef.update({
             balance: 0
         });
 
-        alert("Withdrawal request submitted successfully!");
+        alert(`Withdrawal request of KSH ${finalAmount} submitted successfully!`);
     });
 }
+
 
 document.querySelector(".withdraw-btn").addEventListener("click", () => {
     const user = auth.currentUser;
@@ -841,5 +870,44 @@ function showLoader() {
     document.querySelector(".home").style.display = "none";
 }
 
+async function updateReferralVisit(userId) {
 
+    try {
+        const userSnap = await database.ref("users/" + userId).once("value");
+        const userData = userSnap.val();
 
+        if (!userData) return;
+
+        const isSubscribed = userData.isSubscribed === true;
+        const refCode = userData.ref;
+        const refR = userData.refR;
+
+        if (!refR || !refCode) return;
+
+        // 🔍 find referrer
+        const refSnap = await database.ref("referrals/" + refR).once("value");
+        if (!refSnap.exists()) return;
+
+        const refEmail = refSnap.val().email;
+
+        const usersSnap = await database.ref("users")
+            .orderByChild("email")
+            .equalTo(refEmail)
+            .once("value");
+
+        if (!usersSnap.exists()) return;
+
+        const referrerId = Object.keys(usersSnap.val())[0];
+
+        // 🔥 update BOTH true or false
+        await database.ref(`users/${referrerId}/visits/${refCode}`).update({
+            isSubscribed: isSubscribed,
+            status: isSubscribed ? "activated" : "pending"
+        });
+
+    
+
+    } catch (err) {
+        console.error("Error updating referral visit:", err);
+    }
+}
