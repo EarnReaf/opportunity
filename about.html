@@ -3,98 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Earning Flow</title>
+<title>Welcome</title>
+
 <style>
 body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: #f1f5f9;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fb;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    height: 100vh;
 }
-.box {
-    background: #1e293b;
-    padding: 28px;
-    border-radius: 14px;
-    max-width: 420px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+
+.card {
+    background: #ffffff;
+    width: 350px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    height: 90vh;
+    margin-top: 36px;
+    margin-bottom: 36px;
+    overflow-y: auto;
 }
-h1 {
-    color: #38bdf8;
-    margin-bottom: 15px;
-    text-align: center;
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 10px;
 }
-.highlight { color: #22c55e; font-weight: bold; }
-.small { color: #94a3b8; font-size: 12px; }
-.section { margin-top: 16px; }
-.center-title {
-    text-align: center;
-    font-weight: bold;
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #2e7dff;
+    font-weight: 600;
+}
+
+.list {
+    margin: 15px 0;
+    padding-left: 18px;
+    color: #333;
+}
+
+.list li {
     margin-bottom: 8px;
 }
-.list {
-    text-align: left;
-    line-height: 1.6;
-}
-.math {
-    text-align: center;
-    margin-top: 10px;
-}
-button {
-    margin-top: 18px;
+
+.example {
+    background: #f1f5ff;
     padding: 12px;
+    border-radius: 10px;
+    margin: 15px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.note {
+    font-size: 14px;
+    color: #555;
+    margin-top: 15px;
+}
+
+.pay {
+    margin-top: 20px;
+    padding: 12px;
+    background: #fff8e6;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.gif {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.gif img {
     width: 100%;
-    border: none;
-    border-radius: 8px;
-    background: #38bdf8;
-    font-weight: bold;
-    cursor: pointer;
+    border-radius: 10px;
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+/* BUTTON */
+.cta-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: linear-gradient(135deg, #2e7dff, #1a5be0);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+    box-shadow: 0 6px 15px rgba(46,125,255,0.25);
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(46,125,255,0.35);
+}
+
+.cta-btn:active {
+    transform: scale(0.98);
 }
 </style>
+
 </head>
 <body>
 
-<div class="box">
+<div class="card">
 
-<h1>New Opprtunity</h1>
+    <div class="title">Welcome to the Community</div>
 
-<p class="center-title">Starting with <span class="highlight">300 KSh</span> you can make <span class="highlight">100,000+ KSh +</span></p>
+    <div class="subtitle">
+        Turn <span class="highlight">KSh 200</span> into thousands of earnings
+    </div>
 
-<div class="section">
-<p class="center-title highlight"><strong>How is it possible.</strong></p>
-<div class="list">
-<p>- Buy Our book at <strong>(300 KSh)</strong> only</p>
-<p>- get a unique code </p>
-<p>- Share your code with <strong>friends</strong> who whats to make money too.</p>
-<p>- once a friend get started and buys the book, you get <span class="highlight">100 KSh</span></p>
-</div>
+    <ul class="list">
+        <li>Join with KSh 200 & get your unique code</li>
+        <li>Share your code with friends</li>
+        <li>Earn KSh 100 per successful join</li>
+    </ul>
+
+    <div class="example">
+        <strong>Example:</strong><br>
+        10 people = KSh 1,000<br>
+        20 people = KSh 2,000
+    </div>
+
+    <div class="note">
+        No limits. No stress. Just share.
+    </div>
+  <!-- CTA BUTTON -->
+    <a href="https://earnreaf.github.io/opportunity/" class="cta-btn">Start Earning</a>
+    <div class="pay">
+        <strong>How to Pay</strong>
+    </div>
+
+    <div class="gif">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGY1OWdmZmZ3d250OGs3YzV4Z2U3MGg0cDh6Y3R4OXl0dHg3eWY4NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RZn73gWuAZYp3Cvn8h/giphy.gif">
+    </div>
+
+
+
+    <div class="footer">
+        Once activated, you receive your sharing code and start earning.<br><br>
+            <!-- CTA BUTTON -->
+    <a href="https://earnreaf.github.io/opportunity/" class="cta-btn">Start Earning</a>
+        Withdraw from your first successful referral 🎉
+    </div>
+
+    <div class="gif">
+      <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHM5b3NuY3hjdm0zOGI0YjZ0MGk3bm8ycXh5NGJ6MTk0aGx2ZHpuNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sP6q3LPRZowRPsMSK2/giphy.gif">
+    </div>
+
 </div>
 
-<div class="section">
-<p class="center-title highlight">Simple Math</p>
-<div class="math">
-<p>1 = 100 KSh</p>
-<p>3 = 300 (break even)</p>
-<p>5 = 500</p>
-<p>10 = 1,000</p>
-</div>
-</div>
-
-<div class="section">
-<div class="list">
-<p>- If you use social media correctly.</p>
-<p>500 = 50,000 KSh</p>
-<p>1000 = 100,000 KSh</p>
-</div>
-</div>
-
-<div class="list">
-<p class="small">No free money, you Buy → you Share → you Earn</p>
-<p class="small">No hidden steps. No confusion.</p>
-<p>Refer a friend before they get refered by someone else.</p>
-<button onclick="window.location.href='https://earnreaf.github.io/opportunity/'">
-  Get Started
-</button>
+</body>
 </html>
