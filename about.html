@@ -5,112 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome</title>
 
-<style>body {
+<style>
+    body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #1a2a6c, #2e7dff, #6dd5fa);
-    background-size: 300% 300%;
-    animation: bgMove 10s ease infinite;
+    background: #0f0f0f;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-/* animated background */
-@keyframes bgMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
+/* CARD */
 .card {
-    backdrop-filter: blur(18px);
-    background: rgba(255, 255, 255, 0.15);
+    background: #1a1a1a;
     width: 90%;
     max-width: 360px;
-    padding: 28px;
-    border-radius: 18px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.2);
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     color: #fff;
-    transition: 0.3s ease;
+    transition: 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    transform: translateY(-4px);
 }
 
+/* TEXT */
 .title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .subtitle {
-    font-size: 16px;
-    opacity: 0.9;
-    margin-bottom: 20px;
+    font-size: 15px;
+    color: #aaa;
+    margin-bottom: 18px;
 }
 
 .highlight {
-    color: #ffd54f;
+    color: #ff3b5c; /* TikTok pink/red vibe */
     font-weight: 700;
 }
 
+/* LIST */
 .list {
     margin: 15px 0;
     padding-left: 18px;
+    color: #ddd;
 }
 
 .list li {
     margin-bottom: 10px;
-    position: relative;
 }
 
-.list li::marker {
-    color: #ffd54f;
-}
-
+/* BOX */
 .example {
-    background: rgba(255,255,255,0.2);
+    background: #111;
     padding: 14px;
-    border-radius: 12px;
+    border-radius: 10px;
     margin: 15px 0;
     font-size: 14px;
-    backdrop-filter: blur(10px);
+    border: 1px solid #2a2a2a;
 }
 
+/* NOTE */
 .note {
-    font-size: 14px;
-    opacity: 0.85;
+    font-size: 13px;
+    color: #888;
     margin-top: 10px;
 }
 
+/* BUTTON */
 .cta-btn {
     display: block;
     width: 100%;
-    margin-top: 22px;
+    margin-top: 20px;
     padding: 14px;
-    background: linear-gradient(135deg, #ffd54f, #ffb300);
-    color: #222;
+    background: #ff3b5c;
+    color: #fff;
     text-align: center;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0 8px 20px rgba(255,213,79,0.4);
+    transition: 0.2s ease;
 }
 
 .cta-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(255,213,79,0.6);
+    background: #ff2a4d;
+    transform: scale(1.03);
 }
 
 .cta-btn:active {
-    transform: scale(0.96);
+    transform: scale(0.97);
 }
 </style>
 
