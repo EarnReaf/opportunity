@@ -91,7 +91,7 @@ if (bookBtn) {
         bookBtn.style.background = "#00c853";
         bookBtn.onclick = () => openBook(); // 🔥 change action
     } else {
-        bookBtn.innerText = "Unlock Access";
+        bookBtn.innerText = "Buy Now";
         bookBtn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
         bookBtn.onclick = openMpesa;
     }
