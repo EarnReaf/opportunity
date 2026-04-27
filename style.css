@@ -23,7 +23,7 @@ gap:40px;
 .book-cover{
 width:300px;
 height:450px;
-background:#ddd url('https://via.placeholder.com/300x450?text=Book+Cover') center/cover no-repeat;
+background:#ddd url('https://github.com/EarnReaf/opportunity/blob/main/cover.png') center/cover no-repeat;
 border-radius:12px;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
