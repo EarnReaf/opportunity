@@ -902,11 +902,23 @@ transform:scale(1.05);
 
 /* ONLY affects M-Pesa popup */
 .mpesa-popup{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+
+    display: none;
+
+    align-items: flex-start;   /* 🔥 instead of center */
+    justify-content: center;
+
+    padding: 20px;             /* 🔥 gives breathing space */
+    overflow-y: auto;
+
+        scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE/Edge */
+      z-index: 100000; /* 🔥 ADD THIS */
   font-family:system-ui, -apple-system, sans-serif;
+
 }
 
 /* Card */
