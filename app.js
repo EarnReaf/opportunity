@@ -643,13 +643,22 @@ function loadWithdrawals(userId) {
 
 function copyCode() {
     const input = document.getElementById("userCode");
+    const code = input.value;
 
-    input.select();
-    input.setSelectionRange(0, 99999);
+    const message = 
+`Hi,
+Try this site : https://earnreaf.github.io/opportunity/about.html
 
-    document.execCommand("copy");
+Use Referral code: ${code}
+;
 
-    alert("Referral code copied!");
+    navigator.clipboard.writeText(message)
+        .then(() => {
+            alert("Referral message copied!");
+        })
+        .catch(() => {
+            alert("Failed to copy text");
+        });
 }
 
 function fitCodeInput() {
