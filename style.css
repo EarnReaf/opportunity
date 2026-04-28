@@ -884,211 +884,116 @@ transform:scale(1.05);
 /* =========================
    M-PESA POPUP
 ========================= */
-.mpesa-popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-
-    display: none;
-
-    align-items: flex-start;   /* 🔥 instead of center */
-    justify-content: center;
-
-    padding: 20px;             /* 🔥 gives breathing space */
-    overflow-y: auto;
-
-        scrollbar-width: none;          /* Firefox */
-    -ms-overflow-style: none;       /* IE/Edge */
-      z-index: 100000; /* 🔥 ADD THIS */
+<style>
+/* ONLY affects M-Pesa popup */
+.mpesa-popup{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:system-ui, -apple-system, sans-serif;
 }
 
-
-.mpesa-card {
-    width: 90%;
-    max-width: 420px;
-    background: #1a1a1a;
-    border: 1px solid #222;
-    border-radius: 15px;
-    padding: 20px;
-    animation: fade 0.3s ease;
-
-    max-height: 90vh;        /* 🔥 prevents cutting */
-    overflow-y: auto;        /* 🔥 scroll inside card */
-        scrollbar-width: none;          /* Firefox */
-    -ms-overflow-style: none;       /* IE/Edge */
+/* Card */
+.mpesa-popup .popup{
+  width:95%;
+  max-width:400px;
+  background:#ffffff;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08),
+             0 2px 8px rgba(0,0,0,0.05);
 }
 
-
-.mpesa-card h2 {
-    color: #ff0050;
-    margin-bottom: 5px;
+/* Text */
+.mpesa-popup .title{
+  font-size:19px;
+  font-weight:700;
+  color:#0f172a;
+  margin-bottom:6px;
 }
 
-.mpesa-sub {
-    font-size: 13px;
-    color: #aaa;
-    margin-bottom: 15px;
+.mpesa-popup .subtitle{
+  font-size:13px;
+  color:#525252;
+  margin-bottom:18px;
 }
 
-.mpesa-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+/* Step */
+.mpesa-popup .step{
+  margin-bottom:18px;
+  font-size:14px;
+  color:#1f2937;
 }
 
-.step {
-    font-size: 13px;
-    color: #ddd;
-    background: #121212;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #222;
+/* Pay box */
+.mpesa-popup .pay-box{
+  margin-top:8px;
+  padding:14px;
+  border-radius:14px;
+  background:#f9fafb;
+  border:1px solid #e5e7eb;
+  text-align:center;
 }
 
-.till-box {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
+.mpesa-popup .amount{
+  font-size:24px;
+  font-weight:700;
+  color:#16a34a;
+  margin-bottom:6px;
 }
 
-.till-box input {
-    flex: 1;
-    min-width: 0; /* 🔥 IMPORTANT: allows shrinking */
-    
-    padding: 10px;
-    border-radius: 10px;
-    font-size: x-large; /* 🔥 reduce from x-large */
-    font-weight: bold;
-    border: 1px solid #222;
-    background: #0f0f0f;
-    color: #00ffaa;
-    text-align: center;
+.mpesa-popup .till{
+  font-size:13px;
+  color:#374151;
+  margin-bottom:10px;
 }
 
-.till-box button {
-    flex-shrink: 0; /* 🔥 prevents button from shrinking */
-    
-    padding: 10px 12px;
-    border-radius: 10px;
-    border: none;
-    
-    cursor: pointer;
-    background: linear-gradient(45deg, #ff0050, #ff7a00);
-    color: white;
-    white-space: nowrap; /* 🔥 prevents wrapping */
+/* Copy button */
+.mpesa-popup .copy{
+  display:inline-block;
+  padding:7px 14px;
+  font-size:12px;
+  border-radius:999px;
+  background:#111827;
+  color:#fff;
+  cursor:pointer;
 }
 
-
-.mpesa-close {
-    width: 100%;
-    padding: 12px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    background: #ff0050;
-    color: white;
-    font-weight: bold;
-    margin-top: 10px;
+/* Business */
+.mpesa-popup .business{
+  margin-top:8px;
+  font-size:12px;
+  color:#6b7280;
 }
 
-.mpesa-phone-input {
-    margin-top: 8px;
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #222;
-    background: linear-gradient(145deg, #333333, #292929);
-    color: #fff;
-    font-size: 14px;
-    outline: none;
-    transition: 0.25s ease;
-    letter-spacing: 1px;
+/* Input (STRICTLY scoped) */
+.mpesa-popup input{
+  width:100%;
+  margin-top:8px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  background:#fff;
+  font-size:14px;
+  outline:none;
+  color:#111827;
 }
 
-/* focus glow */
-.mpesa-phone-input:focus {
-    border-color: #ff0050;
-    box-shadow: 0 0 0 2px rgba(255, 0, 80, 0.2);
+/* Button (STRICTLY scoped) */
+.mpesa-popup button{
+  width:100%;
+  margin-top:16px;
+  padding:13px;
+  border:none;
+  border-radius:14px;
+  font-weight:600;
+  font-size:14px;
+  background:linear-gradient(135deg,#16a34a,#15803d);
+  color:white;
+  cursor:pointer;
 }
-
-/* placeholder style */
-.mpesa-phone-input::placeholder {
-    color: #666;
-    font-size: 13px;
-}
-
-/* subtle hover */
-.mpesa-phone-input:hover {
-    border-color: #333;
-}
-
-.mpesa-steps .step {
-    display: flex;
-    flex-direction: row;   /* 🔥 change from column → row */
-    align-items: center;
-    flex-wrap: wrap;       /* allows wrapping if screen too small */
-    gap: 5px;
-    white-space: nowrap;
-}
-
-
-.used-numbers {
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.used-number-item {
-    padding: 6px 10px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    font-size: 12px;
-    color: #ddd;
-}
-
-.pay-btn {
-    display: block;              /* 🔥 makes margin auto work */
-    margin: 15px auto 0 auto;   /* 🔥 centers horizontally */
-    
-    background-color: #28a745;
-    color: white;
-    border: none;
-
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: bold;
-
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-
-.pay-btn:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-}
-
-.pay-btn:active {
-    background-color: #1e7e34;
-    transform: scale(0.98);
-}
-
-.payment-warning {
-    font-size: 12px;
-    color: #ffb300;
-    background: rgba(255, 179, 0, 0.1);
-    border: 1px solid rgba(255, 179, 0, 0.2);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    line-height: 1.5;
-}
+</style>
 
 .how-it-works {
     margin-top: 15px;
