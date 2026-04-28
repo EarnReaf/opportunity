@@ -11,6 +11,10 @@ body {
 }
 
 
+.used-number-item{
+    color: black;
+}
+
 .hero{
 display:flex;
 flex-wrap:wrap;
