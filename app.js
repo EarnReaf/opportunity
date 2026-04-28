@@ -646,11 +646,12 @@ function copyCode() {
     const code = input.value;
 
     const message = 
-`Hi,
-Try this site : https://earnreaf.github.io/opportunity/about.html
+`Hi 👋
 
-Use Referral code: ${code}
-;
+Try this site: https://earnreaf.github.io/opportunity/about.html
+
+Use referral code: ${code}
+`;
 
     navigator.clipboard.writeText(message)
         .then(() => {
