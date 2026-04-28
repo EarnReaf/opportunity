@@ -93,7 +93,7 @@ if (bookBtn) {
     } else {
         bookBtn.innerText = "Buy Now";
         bookBtn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
-        bookBtn.onclick = openMpesa;
+        bookBtn.onclick = () => openMpesa();
     }
 }
 
