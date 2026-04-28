@@ -120,7 +120,7 @@ if (bookBtn) {
 
 
 function openBook() {
-    const driveLink = "https://drive.google.com/file/d/1xB_cWW6uaI0y8z8UX3dA5swCrnZRm_O-/view?usp=sharing";
+    const driveLink = "https://drive.google.com/file/d/1KT46bG-_hLfD8f8sWpskmAyv-Rzci7Ql/view?usp=sharing";
 
     window.open(driveLink, "_blank");
 }
