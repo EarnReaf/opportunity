@@ -646,7 +646,7 @@ function copyCode() {
     const code = input.value;
 
     const message = `Hi 👋
-Check out : https://earnreaf.github.io/opportunity/about.html
+Check out this opportunity : https://earnreaf.github.io/opportunity/about.html
 Use code: ${code}`;
 
     navigator.clipboard.writeText(message)
