@@ -645,13 +645,9 @@ function copyCode() {
     const input = document.getElementById("userCode");
     const code = input.value;
 
-    const message = 
-`Hi 👋
-
+    const message = `Hi 👋
 Try this site: https://earnreaf.github.io/opportunity/about.html
-
-Use referral code: ${code}
-`;
+Use referral code: ${code}`;
 
     navigator.clipboard.writeText(message)
         .then(() => {
