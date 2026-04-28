@@ -152,19 +152,10 @@ function loadUserData(userId) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       ELEMENTS
-    ========================= */
-
-
     const menuItems = document.querySelectorAll(".sidebar li");
     const sections = document.querySelectorAll(".section");
 
-    /* =========================
-       SHOW SECTION (DASHBOARD NAV)
-    ========================= */
     function showSection(sectionClass) {
-
         sections.forEach(sec => sec.classList.remove("active"));
 
         const target = document.querySelector(".section." + sectionClass);
@@ -174,10 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // 🔥 MAKE IT GLOBAL (THIS IS THE FIX)
+    window.showSection = showSection;
+
     menuItems[0].addEventListener("click", () => showSection("dashboard"));
     menuItems[1].addEventListener("click", () => showSection("referrals"));
     menuItems[2].addEventListener("click", () => showSection("payoutHistory"));
-
 
 });
 /* ==========================================================
