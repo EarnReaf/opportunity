@@ -884,7 +884,7 @@ transform:scale(1.05);
 /* =========================
    M-PESA POPUP
 ========================= */
-<style>
+
 /* ONLY affects M-Pesa popup */
 .mpesa-popup{
   height:100vh;
@@ -993,7 +993,7 @@ transform:scale(1.05);
   color:white;
   cursor:pointer;
 }
-</style>
+
 
 .how-it-works {
     margin-top: 15px;
