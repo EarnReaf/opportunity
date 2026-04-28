@@ -315,45 +315,36 @@ A touching and emotional story about love, reflection, and realization,
 <!-- =========================
      M-PESA PAYMENT POPUP
 ========================= -->
-<div class="mpesa-popup" id="mpesaPopup">
-  <div class="mpesa-card">
+<div class="mpesa-popup">
 
-    <h2>Lipa na M-Pesa</h2>
-    <p class="mpesa-sub">Activate in only 2 steps.</p>
+  <div class="popup">
 
-            <div class="mpesa-steps">
-<div class="step">
-  1. Pay 
-  <span style="color:#00ff99; font-weight:bold;">Ksh 200 </span>to Buy goods & services till
-</div>
+    <div class="title">Lipa na M-Pesa</div>
+    <div class="subtitle">Activate in only 2 steps.</div>
 
-      <div class="till-box">
-        <input id="tillNumber" value="3194361" readonly>
-        <button onclick="copyTill()">Copy</button>
+    <div class="step">
+      1. Pay
+      <div class="pay-box">
+        <div class="amount">Ksh 200</div>
+        <div class="till">
+          Buy goods & services till<br><b>3194361</b>
+        </div>
+        <div class="copy" onclick="navigator.clipboard.writeText('3194361')">
+          Copy
+        </div>
+        <div class="business">BLOOMTASKER NET</div>
       </div>
-       <input value="BLOOMTASKER NET" readonly>
-<div class="step">
-  2. Enter Mpesa number used to pay:
-  <input 
-    type="tel" 
-    id="mpesaPhone"
-    placeholder="e.g 2547XXXXXXXX"
-    class="mpesa-phone-input"
-  >
-</div>
-<div id="usedNumbersList" class="used-numbers"></div>
-<p class="payment-warning">
-  This is where all the numbers you used to attempt payment will be listed. 
-  Once one of these numbers completes the payment, you will be activated and receive your code.
-</p>
-
     </div>
- 
-   <button id="confirmPayBtn" class="pay-btn" onclick="confirmPaid()">
-    Confirm I Have Paid
-</button>
+
+    <div class="step">
+      2. Enter Mpesa number used to pay:
+      <input type="tel" placeholder="e.g 2547XXXXXXXX">
+    </div>
+
+    <button onclick="confirmPaid()">confirm i have payed</button>
 
   </div>
+
 </div>
 
 
