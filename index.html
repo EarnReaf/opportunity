@@ -46,11 +46,10 @@
 <section class="login" style="display: none;">
 
   <div class="login-card">
-<h1 class="app-title">Earn Reaf</h1>
+<h1 class="app-title" onclick="location.reload()"></h1>>Earn Reaf</h1>
 <p id="welcome">WELCOME</p>
-<p class="app-subtitle">
-  'Promote Hustler Manual book at Ksh 200 and get Ksh 100<br> per successful referral sale with no limit'
-</p>
+
+
 
     <!-- Toggle Buttons -->
 <div class="auth-switch">
@@ -150,33 +149,82 @@
 }
 </style>
 
-<div class="topbar">🔥 Referral App</div>
+<div class="topbar">Referral App</div>
 
 <div class="container">
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>🔥 Reaf</h2>
+        <h2>Reaf</h2>
         <ul>
             <li>Dashboard</li>
-            <li>Referrals</li>
+            <li>Invites</li>
             <li>Payout History</li>
+            <button id="authButton" class="auth-btn-small">Logout</button>
         </ul>
     </div>
 
     <!-- Main Content -->
 <div class="main">
+<!-- EARN NOW (FULL AREA) -->
+
+<div class="section earn-now">
+   <h2>Registration Code Card</h2>
+<section class="hero">
+
+        <div class="ref-card">
+            <div class="card-top">
+                <span class="brand"
+                   REAF CARD
+                 </span>
+                <span class="limit">Max 10 Users</span>
+            </div>
+
+            <div class="card-number" id="earnCardCode">
+                REF-XXXXXXX
+            </div>
+
+            <div class="card-details">
+                <div>
+                    <span class="label">Price</span>
+                    <span class="value">Ksh 300</span>
+                </div>
+
+                <div>
+                    <span class="label">Per Signup</span>
+                    <span class="value profit">+Ksh 100</span>
+                </div>
+            </div>
+
+            <button class="card-btn" onclick="openMpesa()">
+                Activate Now
+            </button>
+        </div>
+<div class="card-toast" id="cardToast">Activated ✅</div>
+<div class="book-info">
+<h2>Reaf Card</h2>
+<p>
+Earn Ksh +100 for every user you invite successfuly activate their register code. Every activation Earns maximum of ksh 1,000 before you activate the code again. Payment is through mobile Mpesa. ALL unwithdrawn weekly earnings are paid out in full every Wednesday.
+</p>
+
+<div class="price">Ksh 300 only</div>
+
+ </div>
+
+
+ 
+</section>
+
+
+</div>
 
     <!-- ALWAYS VISIBLE -->
 <div class="account">
     <h3 id="username">Account: @</h3>
+    <h3 id="totaleanings">Total Earnings</h3>
     <div class="balance" id="balance">Balance: KSH 0</div>
 
-    <button class="withdraw-btn">Withdraw</button>
-
-    <div class="code-text">
-        This is the code others will use to register with and you will earn after they activate.
-    </div>
+    
 
     <!-- 🔥 AUTH BUTTON -->
 <div class="auth-btn-row">
@@ -184,14 +232,13 @@
 
 <!-- LEFT: REF CODE -->
 <div class="code-mini" id="codeMini">
-    <button id="getCodeBtn" onclick="getCode()">
-        Get Code
+    <button id="getCodeBtn" onclick="showSection('earn-now')">
+        + Start Earning
     </button>
+
 </div>
 
-    <!-- RIGHT: AUTH -->
-    <button id="authButton" class="auth-btn-small">Logout</button>
-
+    <button class="withdraw-btn">Withdraw</button>
 </div>
 </div>
 
@@ -200,24 +247,71 @@
     <!-- Dashboard (Subscriptions) -->
 <div class="section dashboard active">
 
-<section class="hero">
-<div class="book-cover"></div>
+    <div class="store-header">
+        <h2>Enjoy our Short Story books.</h2>
+        <p>Explore top picks and trending reads</p>
+    </div>
 
-<div class="book-info">
-<h2>It Was Always You</h2>
-<p>
-A touching and emotional story about love, reflection, and realization,
-  showing how the truth of what we feel is often understood only with time.
-</p>
+    <div class="amazon-grid">
 
-<div class="price">Ksh 200</div>
+        <!-- BOOK 1 -->
+        <div class="amazon-card">
+            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/cover.png">
 
-<a  class="btn" id='bookBtn' onclick="openMpesa()">Buy Now</a>
- </div>
+            <h4>It Was A lways You</h4>
+            <p class="author">by Reaf Stories</p>
+
+            <div class="rating">⭐⭐⭐⭐☆ <span>(124)</span></div>
+
+            <div class="price">Ksh 300</div>
+
+            <button class="buy-btn" onclick="openBook('book1')">Read Now</button>
+        </div>
+
+        <!-- BOOK 2 -->
+        <div class="amazon-card">
+            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/echoes.jpeg">
+
+            <h4>Echoes of Yesterday</h4>
+            <p class="author">by Reaf Stories</p>
+
+            <div class="rating">⭐⭐⭐⭐⭐ <span>(89)</span></div>
+
+            <div class="price">Ksh 250</div>
+
+            <button class="buy-btn" onclick="openBook('book2')">Read Now</button>
+        </div>
+
+        <!-- BOOK 3 -->
+        <div class="amazon-card">
+            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/midnight.jpeg">
+
+            <h4>Midnight Letters</h4>
+            <p class="author">by Reaf Stories</p>
+
+            <div class="rating">⭐⭐⭐⭐☆ <span>(56)</span></div>
+
+            <div class="price">Ksh 320</div>
+
+            <button class="buy-btn" onclick="openBook('book3')">Read Now</button>
+        </div>
+
+                <!-- BOOK 4 -->
+        <div class="amazon-card">
+            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/silent.jpeg">
+
+            <h4>The Silent Promise</h4>
+            <p class="author">by Reaf Stories</p>
+
+            <div class="rating">⭐⭐⭐⭐☆ <span>(124)</span></div>
+
+            <div class="price">Ksh 300</div>
+
+            <button class="buy-btn" onclick="openBook('book4')">Read Now</button>
+        </div>
 
 
- 
-</section>
+    </div>
 
 </div>
 
@@ -298,7 +392,7 @@ A touching and emotional story about love, reflection, and realization,
       <h3>Info</h3>
       <p class="footer-text">
         Payments are processed via M-Pesa.<br>
-        Earnings depend on successful referrals.<br>
+        Earnings depend on successful invites.<br>
         No hidden fees.
       </p>
     </div>
@@ -343,7 +437,7 @@ A touching and emotional story about love, reflection, and realization,
     <div id="usedNumbersList" class="used-numbers"></div>
     <p class="payment-warning">
   This is where all the numbers you used to attempt payment will be listed. 
-  Once one of these numbers completes the payment, you will be activated and receive your code.
+  Once one of these numbers completes the payment, then you will be activated.
 </p>
     <button onclick="confirmPaid()">confirm i have payed</button>
 
