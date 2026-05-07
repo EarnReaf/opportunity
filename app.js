@@ -81,21 +81,10 @@ if (lastSubscriptionState !== currentState) {
                 "Account: @" + (data.name || "User");
 
             document.getElementById("balance").innerText =
-                "Balance: KSH " + (data.balance || 0);
+                "Ksh " + (data.balance || 0)+'.00';
 
 const bookBtn = document.getElementById("bookBtn");
 
-if (bookBtn) {
-    if (data.isSubscribed === true) {
-        bookBtn.innerText = "🔓 Open Book";
-        bookBtn.style.background = "#00c853";
-        bookBtn.onclick = () => openBook(); // 🔥 change action
-    } else {
-        bookBtn.innerText = "Buy Now";
-        bookBtn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
-        bookBtn.onclick = () => openMpesa();
-    }
-}
 
           
     // ✅ ADD THIS HERE (ONLY RUN ONCE)
@@ -119,12 +108,17 @@ if (bookBtn) {
 
 
 
-function openBook() {
-    const driveLink = "https://drive.google.com/file/d/1KT46bG-_hLfD8f8sWpskmAyv-Rzci7Ql/view?usp=sharing";
+const books = {
+  book1: "https://drive.google.com/file/d/1KT46bG-_hLfD8f8sWpskmAyv-Rzci7Ql/view?usp=sharing",
+    book2: "https://drive.google.com/file/d/17YQQpwwjzZiM9q4qopHNaC-c7fYKbien/view?usp=sharing",
+      book3: "https://drive.google.com/file/d/1SXJThitUArWDZyxfpDvQ3re6Q-wQQK3p/view?usp=sharing",
+      book4: "https://drive.google.com/file/d/17BlD9JUUezqEP6cA8f-lzpIPe-Zm5BmV/view?usp=sharing",
+      book5: "https://drive.google.com/file/d/17YQQpwwjzZiM9q4qopHNaC-c7fYKbien/view?usp=sharing"
+};
 
-    window.open(driveLink, "_blank");
+function openBook(id) {
+    window.open(books[id], "_blank");
 }
-
 
 
 /* =========================
@@ -597,6 +591,18 @@ document.querySelector(".withdraw-btn").addEventListener("click", () => {
     requestWithdraw(user);
 });
 
+function showCardToast(message = "Activated ✅") {
+    const toast = document.getElementById("cardToast");
+    if (!toast) return;
+
+    toast.innerText = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
+
 function loadWithdrawals(userId) {
 
     const ref = database.ref(`withdrawRequests/${userId}`);
@@ -684,31 +690,58 @@ function listenReferralCode(uid) {
         const data = snapshot.val();
         if (!data) return;
 
-        const container = document.getElementById("codeMini");
-
         const code = data.ref || "NO-CODE";
         const isSubscribed = data.isSubscribed === true;
 
-        // =========================
-        // 🔥 REAL TIME UI SWITCH
-        // =========================
+        const cardCode = document.getElementById("earnCardCode");
+        const cardBtn = document.querySelector(".card-btn");
+        const cardStatus = document.querySelector(".card-status");
 
+        // =========================
+        // CODE DISPLAY
+        // =========================
+        if (cardCode) {
+            cardCode.innerText = code;
+        }
+
+        if (!cardBtn) return;
+
+        // =========================
+        // BUTTON UI
+        // =========================
         if (isSubscribed) {
-
-            // ✅ SHOW COPY CODE
-            container.innerHTML = `
-                <input id="userCode" type="text" readonly value="${code}" />
-                <button onclick="copyCode()">Copy</button>
-            `;
-
+            cardBtn.innerText = "Activated";
+            cardBtn.style.background = "#00c853";
         } else {
+            cardBtn.innerText = "Activate Now";
+            cardBtn.style.background = "linear-gradient(45deg, #ff0050, #ff7a00)";
+        }
 
-            // ❌ SHOW GET CODE
-            container.innerHTML = `
-                <button id="getCodeBtn" onclick="getCode()">
-                    Get Code
-                </button>
-            `;
+        // =========================
+        // CLICK BEHAVIOR (THE FIX 🔥)
+        // =========================
+        cardBtn.onclick = function () {
+
+            const user = auth.currentUser;
+
+            if (!user) {
+                alert("Please login first");
+                return;
+            }
+
+            if (isSubscribed) {
+                showCardToast("Already Activated ✅"); // 🔥 show toast
+            } else {
+                openMpesa(); // 🔥 open mpesa
+            }
+        };
+
+        // =========================
+        // STATUS TEXT
+        // =========================
+        if (cardStatus) {
+            cardStatus.innerText = isSubscribed ? "Activated" : "Not Activated";
+            cardStatus.style.color = isSubscribed ? "#00ffaa" : "#ff0050";
         }
     });
 }
