@@ -165,6 +165,7 @@ transform:scale(1.05);
 .sidebar h2 {
     color: #ff0050;
     margin-bottom: 30px;
+    margin-right: 30px;
 }
 
 .sidebar ul {
