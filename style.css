@@ -164,8 +164,7 @@ transform:scale(1.05);
 
 .sidebar h2 {
     color: #ff0050;
-    margin-bottom: 30px;
-    margin-right: 30px;
+
 }
 
 .sidebar ul {
@@ -1977,6 +1976,8 @@ transform:scale(1.05);
     .sidebar h2 {
         margin: 0;
         font-size: 18px;
+            margin-bottom: 30px;
+    margin-right: 30px;
     }
 
     .sidebar ul {
