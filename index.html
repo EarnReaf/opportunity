@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
-<title>Reaf</title>
+<title>FlowCash KE</title>
 
 
 </head>
@@ -19,7 +19,7 @@
     <h2>User Agreement</h2>
 
     <div class="agreement-content">
-      <p>Welcome to Earn Reaf.</p>
+      <p>Welcome to FlowCash KE.</p>
 
       <p>
         By creating an account, you agree to:
@@ -43,57 +43,78 @@
 
 </section>
 
+
+<section class="agreement-section" id="agreementSection">
+
+  <div class="agreement-card">
+    
+    <h2>Start Earning</h2>
+    <div class="agreement-content">
+      <p>Welcome to FlowCash KE.</p>
+      <p>
+        By creating an account, you agree to:
+      </p>
+      <ul>
+        <li>Get you invite code for ONLY ksh 200.</li>
+        <li>Then alway get ksh 100, for every friend you invite.</li>
+        <li>Recover your ksh 200 and continue earning afterwards.</li>
+      <p>
+        NB: all unwithdrawn weekly eanings are paid in full every Wednessday.
+      </p>
+      </ul>
+
+      <p>
+        Act first before your friend get invited.
+      </p>
+    </div>
+
+    <button class="btn primary" onclick="openMpesa()">Continue</button>
+    <button class="btn primary" onclick="closeAgreement()">Cancle</button>
+
+  </div>
+
+</section>
+
+
 <section class="login" style="display: none;">
 
   <div class="login-card">
-<h1 class="app-title" onclick="location.reload()">Earn Reaf</h1>
-<p id="welcome">WELCOME</p>
-
-
-
-    <!-- Toggle Buttons -->
-<div class="auth-switch">
-  <div class="switch-slider"></div>
-  <button id="loginTab" class="switch-btn active" onclick="switchAuth('login')">Login</button>
-  <button id="signupTab" class="switch-btn" onclick="switchAuth('signup')">Sign Up</button>
-</div>
+            <div class="badge">🚀 You're 1 step closer</div>
 
 <!-- LOGIN FORM -->
 <form id="loginForm" class="form active">
-  <label for="login_email">Email</label>
-  <input id="login_email" type="text" placeholder="Enter your email">
+              <h1>Login Now</h1>
+            <div class="sub">Join now — you're <span class="highlight">1 step closer to something big</span>.</div>
 
-  <label for="login_password">Password</label>
-  <input id="login_password" type="password" placeholder="Enter your password">
+  <input id="login_email" type="text" placeholder="Phone Number">
+  <input id="login_password" type="password" placeholder="Password">
 
   <button type="submit" class="btn primary">Login</button>
   <p class="switch-text">
   Don’t have an account? 
-  <span onclick="switchAuth('signup')">Create one</span>
+  <span onclick="switchAuth('signup')">Create Account</span>
 </p>
   <p class="form-note" style="font-style: italic;">“Learn. Improve. Repeat.”</p>
 </form>
 
 <!-- SIGNUP FORM -->
 <form id="registerForm" class="form">
-  <label for="reg_name">Full Name</label>
-  <input id="reg_name" type="text" placeholder="Enter your full name">
+              <h1>Create Account</h1>
+            <div class="sub">Join now — you're <span class="highlight">1 step closer to something big</span>.</div>
 
-  <label for="reg_email">Email</label>
-  <input id="reg_email" type="text" placeholder="Enter your email">
-
-  <label for="reg_password">Password</label>
-  <input id="reg_password" type="password" placeholder="Create a password">
+  <input id="reg_name" type="text" placeholder="Full Name">
+  <input id="reg_email" type="text" placeholder="Phone Number">
+  <input id="reg_password" type="password" placeholder="Password">
 
 <label for="reg_referral">
-  Referral Code 
+  Invite Code 
   <a href="https://earnreaf.github.io/opportunity/help.html" class="help-link">
   Where do I get this?
 </a>
 
 </label>
 
-<input id="reg_referral" type="text" placeholder="Enter referral code">
+<input id="reg_referral" type="text" placeholder="Enter Invite code">
 
 
   <div class="agreement-box">
@@ -109,7 +130,6 @@
   Already have an account? 
   <span onclick="switchAuth('login')">Login</span>
 </p>
-  <p class="form-note">Join now and be part of a community that values growth and rewards!</p>
 </form>
 
   </div>
@@ -155,9 +175,8 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>Reaf</h2>
+        <h2 onclick="location.reload()">FlowCash KE</h2>
         <ul>
-            <li>Dashboard</li>
             <li>Invites</li>
             <li>Payout History</li>
             <button id="authButton" class="auth-btn-small">Logout</button>
@@ -166,57 +185,7 @@
 
     <!-- Main Content -->
 <div class="main">
-<!-- EARN NOW (FULL AREA) -->
 
-<div class="section earn-now">
-   <h2>Registration Code Card</h2>
-<section class="hero">
-
-        <div class="ref-card">
-            <div class="card-top">
-                <span class="brand"
-                   REAF CARD
-                 </span>
-                <span class="limit">Max 10 Users</span>
-            </div>
-
-            <div class="card-number" id="earnCardCode">
-                REF-XXXXXXX
-            </div>
-
-            <div class="card-details">
-                <div>
-                    <span class="label">Price</span>
-                    <span class="value">Ksh 200</span>
-                </div>
-
-                <div>
-                    <span class="label">Per Signup</span>
-                    <span class="value profit">+Ksh 100</span>
-                </div>
-            </div>
-
-            <button class="card-btn" onclick="openMpesa()">
-                Activate Now
-            </button>
-        </div>
-<div class="card-toast" id="cardToast">Activated ✅</div>
-<div class="book-info">
-<h2>Reaf Card</h2>
-<p>
-Earn Ksh +100 for every user you invite successfuly activate their register code. Every activation Earns maximum of ksh 1,000 before you activate the code again. Payment is through mobile Mpesa. ALL unwithdrawn weekly earnings are paid out in full every Wednesday.
-</p>
-
-<div class="price">Ksh 300 only</div>
-
- </div>
-
-
- 
-</section>
-
-
-</div>
 
     <!-- ALWAYS VISIBLE -->
 <div class="account">
@@ -232,8 +201,8 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 
 <!-- LEFT: REF CODE -->
 <div class="code-mini" id="codeMini">
-    <button id="getCodeBtn" onclick="showSection('earn-now')">
-        + Start Earning
+    <button id="getCodeBtn" onclick="openInvitePopup()">
+        Invite a Friend
     </button>
 
 </div>
@@ -243,83 +212,10 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 </div>
 
     <!-- SWITCHING CONTENT -->
-    
-    <!-- Dashboard (Subscriptions) -->
-<div class="section dashboard active">
 
-    <div class="store-header">
-        <h2>Enjoy our Short Story books.</h2>
-        <p>Explore top picks and trending reads</p>
-    </div>
-
-    <div class="amazon-grid">
-
-        <!-- BOOK 1 -->
-        <div class="amazon-card">
-            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/cover.png">
-
-            <h4>It Was A lways You</h4>
-            <p class="author">by Reaf Stories</p>
-
-            <div class="rating">⭐⭐⭐⭐☆ <span>(124)</span></div>
-
-            <div class="price">Ksh 300</div>
-
-            <button class="buy-btn" onclick="openBook('book1')">Read Now</button>
-        </div>
-
-        <!-- BOOK 2 -->
-        <div class="amazon-card">
-            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/echoes.jpeg">
-
-            <h4>Echoes of Yesterday</h4>
-            <p class="author">by Reaf Stories</p>
-
-            <div class="rating">⭐⭐⭐⭐⭐ <span>(89)</span></div>
-
-            <div class="price">Ksh 250</div>
-
-            <button class="buy-btn" onclick="openBook('book2')">Read Now</button>
-        </div>
-
-        <!-- BOOK 3 -->
-        <div class="amazon-card">
-            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/midnight.jpeg">
-
-            <h4>Midnight Letters</h4>
-            <p class="author">by Reaf Stories</p>
-
-            <div class="rating">⭐⭐⭐⭐☆ <span>(56)</span></div>
-
-            <div class="price">Ksh 320</div>
-
-            <button class="buy-btn" onclick="openBook('book3')">Read Now</button>
-        </div>
-
-                <!-- BOOK 4 -->
-        <div class="amazon-card">
-            <img src="https://raw.githubusercontent.com/EarnReaf/opportunity/main/silent.jpeg">
-
-            <h4>The Silent Promise</h4>
-            <p class="author">by Reaf Stories</p>
-
-            <div class="rating">⭐⭐⭐⭐☆ <span>(124)</span></div>
-
-            <div class="price">Ksh 300</div>
-
-            <button class="buy-btn" onclick="openBook('book4')">Read Now</button>
-        </div>
-
-
-    </div>
-
-</div>
-
-    <!-- Referrals -->
 <!-- Referrals -->
-<!-- Referrals -->
-<div class="section referrals">
-    <h3>Your Referrals</h3>
+<div class="section referrals active">
+    <h3>Your Invites</h3>
 
 <table class="payout-table">
     <thead>
@@ -334,7 +230,7 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 </table>
 </div>
 
-    <!-- Payouts -->
+
 <!-- Payouts -->
 <div class="section payoutHistory">
     <h3>Payout History</h3>
@@ -360,7 +256,7 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 
     <!-- BRAND -->
     <div class="footer-col">
-      <h2 class="footer-logo">🔥 Earn Reaf</h2>
+      <h2 class="footer-logo">🔥FlowCash KE</h2>
       <p class="footer-text">
         A simple referral platform designed to help you earn by sharing value.
         Learn, grow, and build income with no limits.
@@ -401,7 +297,7 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 
   <!-- BOTTOM BAR -->
   <div class="footer-bottom">
-    © 2026 Earn Reaf. All rights reserved.
+    © 2026 FlowCash KE. All rights reserved.
   </div>
 </footer>
 </section>
@@ -414,7 +310,7 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
   <div class="popup mpesa-card">
 
     <div class="title">Lipa na M-Pesa</div>
-    <div class="subtitle">Activate in only 2 steps.</div>
+    <div class="subtitle">You're ONLY one step away.</div>
 
     <div class="step">
       1. Pay
@@ -431,15 +327,14 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
     </div>
 
     <div class="step">
-      2. Enter Mpesa number used to pay:
-      <input id="mpesaPhone" type="tel" placeholder="e.g 2547XXXXXXXX">
+      <input id="mpesaPhone" type="tel" placeholder="Enter Mpesa number used to pay">
     </div>
     <div id="usedNumbersList" class="used-numbers"></div>
     <p class="payment-warning">
   This is where all the numbers you used to attempt payment will be listed. 
   Once one of these numbers completes the payment, then you will be activated.
 </p>
-    <button onclick="confirmPaid()">confirm i have payed</button>
+    <button onclick="confirmPaid()">Confirm i have paid</button>
 
   </div>
 
@@ -450,7 +345,7 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 
     <div class="loader-container">
 
-        <div class="title">Earn Reaf</div>
+        <div class="title">FlowCash KE</div>
         <div class="subtitle">Loading</div>
 
         <div class="spinner"></div>
@@ -463,7 +358,28 @@ Earn Ksh +100 for every user you invite successfuly activate their register code
 
 </div>
 
+<!-- =========================
+     INVITE CODE POPUP
+========================= -->
+<div class="invite-popup" id="invitePopup">
 
+  <div class="invite-card">
+
+    <h2>Your Invite Code</h2>
+
+    <input id="inviteCodeInput" type="text" value="NOT ACTIVATED" readonly>
+
+    <div class="invite-actions">
+      <button id="getCodeBtnPopup" onclick="openMpesa()">Get Code</button>
+
+      <button onclick="copyInviteCode()">Copy</button>
+    </div>
+
+    <button class="cancel-btn" onclick="closeInvitePopup()">Cancel</button>
+
+  </div>
+
+</div>
 
 <!-- ===================================================== -->
 <!-- FIREBASE SDKs -->

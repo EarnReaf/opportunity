@@ -10,6 +10,32 @@ body {
     color: #fff;
 }
 
+/* Typography */
+h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.sub {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.badge {
+    background: rgba(34,197,94,0.1);
+    color: #22c55e;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
 
 .payment-warning {
     font-size: 12px;
@@ -164,7 +190,7 @@ transform:scale(1.05);
 
 .sidebar h2 {
     color: #ff0050;
-
+    margin-bottom: 30px;
 }
 
 .sidebar ul {
@@ -491,7 +517,7 @@ transform:scale(1.05);
 
 .auth-tabs button {
     flex: 1;
-    padding: 10px;
+    padding: 14px;
     border: none;
     border-radius: 20px;
     background: #1a1a1a;
@@ -504,6 +530,86 @@ transform:scale(1.05);
 .auth-tabs .active-tab {
     background: linear-gradient(45deg, #ff0050, #ff7a00);
     color: white;
+}
+
+/* =========================
+   INVITE POPUP
+========================= */
+.invite-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+}
+
+.invite-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid #222;
+}
+
+.invite-card h2 {
+    margin-bottom: 15px;
+    color: #ff0050;
+}
+
+.invite-card input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: #121212;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* BUTTONS */
+.invite-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.invite-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Get Code */
+#getCodeBtnPopup {
+    background: linear-gradient(45deg, #ff0050, #ff7a00);
+    color: white;
+}
+
+/* Copy */
+.invite-actions button:nth-child(2) {
+    background: #222;
+    color: #fff;
+}
+
+/* Cancel */
+.cancel-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #333;
+    color: #aaa;
+    cursor: pointer;
 }
 
 /* =========================
@@ -1439,7 +1545,7 @@ transform:scale(1.05);
 
         scrollbar-width: none;          /* Firefox */
     -ms-overflow-style: none;       /* IE/Edge */
-      z-index: 100000; /* 🔥 ADD THIS */
+      z-index: 900000; /* 🔥 ADD THIS */
   font-family:system-ui, -apple-system, sans-serif;
 
 }
@@ -1976,8 +2082,6 @@ transform:scale(1.05);
     .sidebar h2 {
         margin: 0;
         font-size: 18px;
-            margin-bottom: 30px;
-    margin-right: 30px;
     }
 
     .sidebar ul {

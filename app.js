@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // 🔥 MAKE IT GLOBAL (THIS IS THE FIX)
     window.showSection = showSection;
 
-    menuItems[0].addEventListener("click", () => showSection("dashboard"));
-    menuItems[1].addEventListener("click", () => showSection("referrals"));
-    menuItems[2].addEventListener("click", () => showSection("payoutHistory"));
+
+    menuItems[0].addEventListener("click", () => showSection("referrals"));
+    menuItems[1].addEventListener("click", () => showSection("payoutHistory"));
 
 });
 /* ==========================================================
@@ -186,17 +186,27 @@ async function registerUser(e) {
   }
 
   // Get inputs
-  const name = document.getElementById("reg_name").value.trim();
-  const email = document.getElementById("reg_email").value.trim();
-  const password = document.getElementById("reg_password").value.trim();
-  let refCode = document.getElementById("reg_referral").value.trim();
+const phone = document.getElementById("reg_email").value.trim();
+const password = document.getElementById("reg_password").value.trim();
+const name = document.getElementById("reg_name").value.trim();
+let refCode = document.getElementById("reg_referral").value.trim();
 
+const cleanPhone = phone.replace(/\D/g, "");
   // Validation
   if (!refCode) {
     alert("Referral code is required.");
     button.disabled = false;
     return;
   }
+
+if (cleanPhone.length !== 10) {
+  alert("Enter a valid phone number (10 digits e.g 0712345678)");
+  button.disabled = false;
+  return;
+}
+
+// 🔥 convert phone → fake email
+const email = cleanPhone + "@app.local";
 
   if (password.length < 6) {
     alert("Password must be at least 6 characters.");
@@ -238,12 +248,11 @@ async function registerUser(e) {
        PREVENT DUPLICATE EMAILS
     ========================================================== */
     const existingUser = await usersRef
-      .orderByChild("email")
-      .equalTo(email)
+.orderByChild("phone").equalTo(cleanPhone)
       .once("value");
 
     if (existingUser.exists()) {
-      alert("This email is already registered.");
+      alert("This Phone Number is already registered.");
       button.disabled = false;
       return;
     }
@@ -257,8 +266,7 @@ async function registerUser(e) {
     /* ==========================================================
        GENERATE REF CODE
     ========================================================== */
-    const newRef =
-      "REF-" + Math.random().toString(36).substr(2, 8).toUpperCase();
+   const newRef = generateRefCode();
 
     const now = Date.now();
 
@@ -267,7 +275,7 @@ async function registerUser(e) {
     ========================================================== */
     await usersRef.child(userId).set({
       name: name,
-      email: email,
+      phone: cleanPhone,
       createdAt: now,
       isSubscribed: false,
       balance: 0,
@@ -285,7 +293,7 @@ async function registerUser(e) {
       return (
         current || {
           name: name,
-          email: email,
+          phone: cleanPhone,
           isSubscribed: false,
           referredBy: refCode || null
         }
@@ -296,11 +304,10 @@ async function registerUser(e) {
        UPDATE REFERRER DATA
     ========================================================== */
     if (refCode !== "REF-123456") {
-      const refEmail = refSnapshot.val().email;
+      const refPhone = refSnapshot.val().phone;
 
       const usersSnapshot = await usersRef
-        .orderByChild("email")
-        .equalTo(refEmail)
+        .orderByChild("phone").equalTo(cleanPhone)
         .once("value");
 
       if (usersSnapshot.exists()) {
@@ -353,6 +360,8 @@ await visitsRef.transaction(current => {
 
 /* ==========================================================
    LOGIN USER
+========================================================== *//* ==========================================================
+   LOGIN USER (PHONE BASED FIX)
 ========================================================== */
 document
   .getElementById("loginForm")
@@ -365,17 +374,30 @@ async function loginUser(e) {
   const button = form.querySelector("button[type='submit']");
   if (button) button.disabled = true;
 
-  const email = document.getElementById("login_email").value.trim();
+  // 📱 PHONE INPUT (NOT EMAIL)
+  const phone = document.getElementById("login_email").value.trim();
   const password = document.getElementById("login_password").value.trim();
 
-  if (!email || !password) {
-    alert("Enter email and password");
-    button.disabled = false;
+  if (!phone || !password) {
+    alert("Enter phone number and password");
+    if (button) button.disabled = false;
     return;
   }
 
+  // clean phone
+  const cleanPhone = phone.replace(/\D/g, "");
+
+  if (cleanPhone.length !== 10) {
+    alert("Enter valid 10-digit phone number (e.g 0712345678)");
+    if (button) button.disabled = false;
+    return;
+  }
+
+  // 🔥 convert phone → fake email (same as registration)
+  const email = cleanPhone + "@app.local";
+
   try {
-    await auth.signOut(); // clear session
+    await auth.signOut(); // optional cleanup
 
     await auth.signInWithEmailAndPassword(email, password);
 
@@ -388,7 +410,6 @@ async function loginUser(e) {
     if (button) button.disabled = false;
   }
 }
-
 /* =========================
    SWITCH LOGIN / SIGNUP
 ========================= */
@@ -396,27 +417,15 @@ function switchAuth(type) {
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
 
-    const loginTab = document.getElementById("loginTab");
-    const signupTab = document.getElementById("signupTab");
 
-    const slider = document.querySelector(".switch-slider");
-
+   
     if (type === "login") {
         loginForm.classList.add("active");
         registerForm.classList.remove("active");
 
-        loginTab.classList.add("active");
-        signupTab.classList.remove("active");
-
-        slider.style.left = "0%";
     } else {
         registerForm.classList.add("active");
         loginForm.classList.remove("active");
-
-        signupTab.classList.add("active");
-        loginTab.classList.remove("active");
-
-        slider.style.left = "50%";
     }
 }
 
@@ -525,7 +534,7 @@ function requestWithdraw(user) {
 
         if (!isActive) {
             alert("Get your code first");
-            openMpesa();
+            openInvitePopup();
             return;
         }
 
@@ -749,7 +758,7 @@ function listenReferralCode(uid) {
 
 function getCode() {
     alert("Get your code first");
-    openMpesa();
+    openInvitePopup();
 }
 
 function showGetCode() {
@@ -786,7 +795,7 @@ function openMpesa() {
 }
 
 function closeMpesa() {
-    document.getElementById("mpesaPopup").style.display = "none";
+    document.getElementById("mpesaPopup").style.display = "none"; closeInvitePopup();
 }
 
 function copyTill() {
@@ -942,4 +951,62 @@ async function updateReferralVisit(userId) {
     } catch (err) {
         console.error("Error updating referral visit:", err);
     }
+}
+
+function generateRefCode() {
+    const numbers = "0123456789";
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    let code = "";
+
+    // pick random position for the letter (0–6)
+    const letterPos = Math.floor(Math.random() * 7);
+
+    for (let i = 0; i < 7; i++) {
+        if (i === letterPos) {
+            // insert ONE letter
+            code += letters[Math.floor(Math.random() * letters.length)];
+        } else {
+            // fill rest with numbers
+            code += numbers[Math.floor(Math.random() * numbers.length)];
+        }
+    }
+
+    return code;
+}
+
+// simulate user state
+let isActivated = false; // 🔥 FOR NOW: NOT ACTIVATED
+
+function openInvitePopup() {
+    const popup = document.getElementById("invitePopup");
+    const input = document.getElementById("inviteCodeInput");
+    const getBtn = document.getElementById("getCodeBtnPopup");
+
+    popup.style.display = "flex";
+
+    if (isActivated) {
+        input.value = "SAMMY123"; // example code
+        getBtn.style.display = "none";
+    } else {
+        input.value = "NOT ACTIVATED";
+        getBtn.style.display = "block";
+    }
+}
+
+function closeInvitePopup() {
+    document.getElementById("invitePopup").style.display = "none";
+}
+
+function copyInviteCode() {
+    const input = document.getElementById("inviteCodeInput");
+
+    if (input.value === "NOT ACTIVATED") {
+        alert("Activate first to get your code");
+        openMpesa();
+        return;
+    }
+
+    navigator.clipboard.writeText(input.value);
+    alert("Code copied!");
 }
